@@ -1,24 +1,21 @@
 # GI-COMMON-PERSONS
 
-Fundación documental de la capacidad común de personas físicas de GI.
-No hay implementación funcional, API desplegada ni release de Persons.
+Biblioteca común tenant-aware para personas físicas del Sistema Integral GI.
 
-- [Estado verificable](STATUS.md).
-- [Hallazgos y procedencia](docs/tecnica/inspeccion-fundacion.md).
-- [Arquitectura y decisiones](docs/tecnica/arquitectura-persons.md).
-- [Modelo de datos propuesto](docs/tecnica/modelo-persons.md).
-- [Contratos propuestos y dependencias reales](docs/tecnica/contratos-persons.md).
-- [Unidades de trabajo, pruebas y gates](docs/tecnica/plan-persons.md).
+La implementación vive en `gi_persons/` y es independiente del transporte y
+de Dental, Law, CRM u otras verticales. Expone una fachada JSON-safe,
+normalización determinista, concurrencia optimista, auditoría y puertos de
+persistencia. `MemoryStore` sirve para pruebas; la migración PostgreSQL/RLS
+está en `supabase/migrations/` y no se despliega automáticamente.
 
-El circuito procede de Template GI v2.0.1, commit
-`fa8aade44fe808635e01916da7347b1d1837da7a`, como snapshot independiente.
-Sus documentos históricos explican el circuito; no prueban funcionalidades,
-auditorías ni releases de este proyecto. No se importan runs históricos.
+La única integración de plataforma permitida es la superficie pública de
+`gi-platform-core` `v0.1.0`: `CoreApi.authorize`, respuestas JSON y errores
+públicos. No se importan stores, tablas ni entidades privadas. El enlace a
+Identity está deshabilitado hasta que Core/host ofrezca el contrato público
+faltante.
 
-Core inspeccionado: v0.1.0, commit
-`673a9a80ff436171e8138aaaa0da4dd96f190d8e`.
-La dependencia es Persons → Core; las verticales consumen Persons.
+Documentación: [implementación técnica](docs/tecnica/persons.md), [contratos](docs/tecnica/contrato-core.md), [modelo](docs/tecnica/modelo-persons.md) y [uso](docs/usuario/persons.md).
 
-Este bootstrap local todavía no constituye una work unit cerrada por el
-circuito. No existe remoto confirmado para Persons. Su publicación, CI y PR
-quedan pendientes; no se simulan con un remoto local ni con aprobaciones ficticias.
+El circuito operativo procede del Template GI v2.0.1. La unidad vigente es el
+Milestone `02-07-persons-implementation`; su evidencia está en
+`runs/v2.0.1/milestone-02-07-persons-implementation/`.

@@ -579,7 +579,7 @@ function Assert-WorkUnitContract {
 
     # Modo Milestone: un unico set de spec/decision/audit/test-report a
     # nivel de work unit, mas docs+indices por cada item individual.
-    $manifestPath = "runs/milestone-$Slug/work-unit.json"
+    $manifestPath = Get-MilestoneManifestPath -Slug $Slug -Version $Version
     $manifest = Read-WorkUnitManifest -Path $manifestPath
     $info = Get-WorkUnitInfo -Slug $Slug -Title $Title -Mode Milestone -Items $manifest.Items -Version $Version
     $policy = Get-EvidenceContract -RunDir $info.RunDir -SddPath $SddPath

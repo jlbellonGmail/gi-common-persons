@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "package_tests": {"command": "pytest tests_persons -q", "result": "16 passed"},
+  "template_tests": {"command": "pytest tests -q", "result": "267 passed"},
+  "compile": {"command": "python -m compileall -q gi_persons", "result": "passed"},
+  "wheel": {"version": "0.1.0", "sha256": "a27c202a6fe470492aa0bc7e9d8d30ced8093e5253c391a9ec4bb7b76df9d26a"},
+  "supply_chain": "passed",
+  "generated_adapters": "in_sync",
+  "database": "migration reviewed statically; no production database or credentials used",
+  "core": {"contract_version": "0.1.0", "consumption": ["CoreApi.authorize", "public JSON responses", "public errors"]}
+}

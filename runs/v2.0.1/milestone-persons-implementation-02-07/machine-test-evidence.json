@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "tests_persons": 16,
+  "tests_template": 267,
+  "all_observed_passed": true,
+  "migration_static_checks": ["tenant composite foreign keys", "document uniqueness", "primary contact partial unique index", "FORCE ROW LEVEL SECURITY", "organization setting policy"],
+  "unsupported_capabilities": ["Core identity linking until D1", "production revocation freshness until D2"]
+}

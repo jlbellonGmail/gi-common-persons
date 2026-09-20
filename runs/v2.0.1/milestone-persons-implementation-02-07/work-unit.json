@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "mode": "milestone",
+  "slug": "persons-implementation-02-07",
+  "items": [
+    "02-contrato-core",
+    "03-personas-identificadores",
+    "04-contactos-vinculos",
+    "05-persistencia-aislamiento",
+    "06-api-publica",
+    "07-readiness-integracion"
+  ]
+}

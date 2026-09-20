@@ -1,0 +1,11 @@
+# Uso de Persons
+
+La fachada `PersonsApi` devuelve diccionarios JSON-safe y errores sanitizados.
+El caller entrega un `RequestContext` creado por el host autenticado; nunca
+acepta `actor_user_id` u organización desde el body. Los IDs de otra
+organización se comportan como `NOT_FOUND` después de autorizar.
+
+Las mutaciones de un agregado existente requieren `expected_version`. Un
+conflicto se reintenta sólo después de volver a leer y decidir; no hay
+exactly-once implícito. Los candidatos de duplicado son explicables y no
+fusionan personas.

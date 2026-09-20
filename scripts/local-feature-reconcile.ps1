@@ -153,7 +153,7 @@ if ([string]::IsNullOrWhiteSpace($WorktreeDir)) {
 }
 
 $reconcileItems = if ($Mode -eq "Milestone") {
-    @((Read-WorkUnitManifest -Path "runs/milestone-$Slug/work-unit.json").Items)
+    @((Read-WorkUnitManifest -Path (Get-MilestoneManifestPath -Slug $Slug -Version $Version)).Items)
 }
 else {
     @($Slug)

@@ -439,3 +439,13 @@ function Get-WorkUnitIdentity {
         updatedAt = [DateTime]::UtcNow.ToString('o')
     }
 }
+function Get-MilestoneManifestPath {
+    param(
+        [Parameter(Mandatory = $true)][string] $Slug,
+        [string] $Version = ""
+    )
+    if ([string]::IsNullOrWhiteSpace($Version)) {
+        return "runs/milestone-$Slug/work-unit.json"
+    }
+    return "runs/$Version/milestone-$Slug/work-unit.json"
+}
