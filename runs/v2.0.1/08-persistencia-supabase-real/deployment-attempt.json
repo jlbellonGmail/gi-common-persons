@@ -1,0 +1,10 @@
+{
+  "project_ref": "gletzbwuvmwjkmoufmyj",
+  "cli_version": "2.117.0",
+  "command": "supabase db push --linked",
+  "result": "blocked",
+  "error_code": "LegacyDbConfigLoginRoleNetworkError",
+  "error": "failed to initialise login role: TransportError",
+  "endpoint": "https://api.supabase.com/v1/projects/gletzbwuvmwjkmoufmyj/cli/login-role",
+  "secrets_logged": false
+}

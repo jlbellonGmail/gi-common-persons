@@ -7,3 +7,4 @@ pytest==8.3.5
 # docs/tecnica/arquitectura.md, decision "Validacion real de JSON Schema
 # para .agentic/"). Tooling del propio circuito, no stack de producto.
 jsonschema==4.23.0
+psycopg[binary]==3.2.3

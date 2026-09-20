@@ -1,0 +1,14 @@
+{
+  "migration_file": "supabase/migrations/20260920000100_persons.sql",
+  "project_ref": "gletzbwuvmwjkmoufmyj",
+  "static_checks": [
+    "schema persons declared",
+    "five requested persons tables declared",
+    "organization_id is present in every table and composite FK",
+    "document uniqueness is organization-aware",
+    "primary contact partial unique index is declared",
+    "RLS is enabled and forced for all five tables"
+  ],
+  "remote_checks": "not_run",
+  "reason": "Supabase CLI TransportError before database login role initialization"
+}

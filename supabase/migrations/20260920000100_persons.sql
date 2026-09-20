@@ -1,94 +1,120 @@
--- GI Persons schema. Execute with a tenant-bound application role.
--- The host must SET LOCAL app.organization_id and app.user_id per transaction.
+-- GI Persons tenant-aware schema.
+-- The application role must set LOCAL app.organization_id in each transaction.
+
 create extension if not exists pgcrypto;
+create schema if not exists persons;
 
-create table if not exists public.persons (
-  person_id uuid primary key default gen_random_uuid(),
-  organization_id text not null,
-  display_name text not null check (length(btrim(display_name)) between 1 and 200),
-  given_names text,
-  family_names text,
-  birth_date date check (birth_date is null or birth_date <= current_date),
-  status text not null default 'active' check (status in ('active','archived')),
-  version bigint not null default 1 check (version > 0),
-  created_at timestamptz not null default timezone('utc', now()),
-  updated_at timestamptz not null default timezone('utc', now()),
-  created_by text not null,
-  updated_by text not null,
-  unique (organization_id, person_id)
+create table if not exists persons.person (
+    organization_id text not null,
+    person_id uuid not null default gen_random_uuid(),
+    display_name text not null check (length(btrim(display_name)) between 1 and 200),
+    given_names text,
+    family_names text,
+    birth_date date,
+    status text not null default 'active' check (status in ('active', 'archived')),
+    version bigint not null default 1 check (version > 0),
+    created_at timestamptz not null default timezone('utc', now()),
+    updated_at timestamptz not null default timezone('utc', now()),
+    created_by text not null,
+    updated_by text not null,
+    primary key (organization_id, person_id)
 );
 
-create table if not exists public.person_identifiers (
-  identifier_id uuid primary key default gen_random_uuid(),
-  organization_id text not null,
-  person_id uuid not null,
-  country_code text not null check (country_code ~ '^[A-Z]{2}$'),
-  document_type text not null,
-  value_original text not null,
-  value_normalized text not null,
-  normalization_version text not null,
-  created_at timestamptz not null default timezone('utc', now()),
-  created_by text not null,
-  foreign key (organization_id, person_id) references public.persons(organization_id, person_id),
-  unique (organization_id, country_code, document_type, value_normalized)
+create table if not exists persons.person_identifier (
+    organization_id text not null,
+    identifier_id uuid not null default gen_random_uuid(),
+    person_id uuid not null,
+    country_code text not null check (country_code ~ '^[A-Z]{2}$'),
+    document_type text not null check (length(btrim(document_type)) between 1 and 80),
+    value_original text not null,
+    value_normalized text not null,
+    normalization_version text not null,
+    created_at timestamptz not null default timezone('utc', now()),
+    created_by text not null,
+    primary key (organization_id, identifier_id),
+    foreign key (organization_id, person_id)
+        references persons.person (organization_id, person_id) on delete restrict,
+    unique (organization_id, country_code, document_type, value_normalized)
 );
 
-create table if not exists public.person_contacts (
-  contact_id uuid primary key default gen_random_uuid(),
-  organization_id text not null,
-  person_id uuid not null,
-  kind text not null check (kind in ('email','phone')),
-  value_original text not null,
-  value_normalized text not null,
-  label text,
-  is_primary boolean not null default false,
-  verified_at timestamptz,
-  created_at timestamptz not null default timezone('utc', now()),
-  updated_at timestamptz not null default timezone('utc', now()),
-  created_by text not null,
-  updated_by text not null,
-  foreign key (organization_id, person_id) references public.persons(organization_id, person_id),
-  unique (organization_id, person_id, kind, value_normalized)
-);
-create unique index if not exists person_contacts_one_primary
-  on public.person_contacts (organization_id, person_id, kind) where is_primary;
-
-create table if not exists public.person_organization_links (
-  link_id uuid primary key default gen_random_uuid(),
-  organization_id text not null,
-  person_id uuid not null,
-  status text not null default 'active' check (status in ('active','inactive')),
-  created_at timestamptz not null default timezone('utc', now()),
-  created_by text not null,
-  foreign key (organization_id, person_id) references public.persons(organization_id, person_id),
-  unique (organization_id, person_id)
+create table if not exists persons.person_contact (
+    organization_id text not null,
+    contact_id uuid not null default gen_random_uuid(),
+    person_id uuid not null,
+    kind text not null check (kind in ('email', 'phone')),
+    value_original text not null,
+    value_normalized text not null,
+    label text,
+    is_primary boolean not null default false,
+    verified_at timestamptz,
+    created_at timestamptz not null default timezone('utc', now()),
+    updated_at timestamptz not null default timezone('utc', now()),
+    primary key (organization_id, contact_id),
+    foreign key (organization_id, person_id)
+        references persons.person (organization_id, person_id) on delete restrict
 );
 
-create table if not exists public.person_audit (
-  audit_id uuid primary key default gen_random_uuid(),
-  organization_id text not null,
-  person_id uuid,
-  actor_user_id text not null,
-  action text not null,
-  occurred_at timestamptz not null default timezone('utc', now()),
-  correlation_id text not null,
-  outcome text not null,
-  entity_version bigint,
-  foreign key (organization_id, person_id) references public.persons(organization_id, person_id)
+create table if not exists persons.person_organization_link (
+    organization_id text not null,
+    link_id uuid not null default gen_random_uuid(),
+    person_id uuid not null,
+    link_status text not null default 'active' check (link_status in ('active', 'inactive')),
+    created_at timestamptz not null default timezone('utc', now()),
+    created_by text not null,
+    primary key (organization_id, link_id),
+    foreign key (organization_id, person_id)
+        references persons.person (organization_id, person_id) on delete restrict,
+    unique (organization_id, person_id)
 );
 
-create index if not exists persons_org_status_id on public.persons(organization_id, status, person_id);
-create index if not exists persons_identifier_person on public.person_identifiers(organization_id, person_id);
-create index if not exists persons_contact_person on public.person_contacts(organization_id, person_id);
+create table if not exists persons.person_audit (
+    organization_id text not null,
+    audit_id uuid not null default gen_random_uuid(),
+    person_id uuid not null,
+    actor_user_id text not null,
+    action text not null,
+    occurred_at timestamptz not null default timezone('utc', now()),
+    correlation_id text not null,
+    outcome text not null,
+    entity_version bigint,
+    primary key (organization_id, audit_id),
+    foreign key (organization_id, person_id)
+        references persons.person (organization_id, person_id) on delete restrict
+);
 
-do $$ declare t text; begin
-  foreach t in array array['persons','person_identifiers','person_contacts','person_organization_links','person_audit'] loop
-    execute format('alter table public.%I enable row level security', t);
-    execute format('alter table public.%I force row level security', t);
-    execute format('drop policy if exists persons_tenant_isolation on public.%I', t);
-    execute format('create policy persons_tenant_isolation on public.%I using (organization_id = current_setting(''app.organization_id'', true)) with check (organization_id = current_setting(''app.organization_id'', true))', t);
-  end loop;
+create unique index if not exists person_contact_primary_per_kind
+    on persons.person_contact (organization_id, person_id, kind) where is_primary;
+create index if not exists person_by_organization_status
+    on persons.person (organization_id, status, person_id);
+create index if not exists person_identifier_by_person
+    on persons.person_identifier (organization_id, person_id);
+create index if not exists person_contact_by_person
+    on persons.person_contact (organization_id, person_id);
+create index if not exists person_link_by_person
+    on persons.person_organization_link (organization_id, person_id);
+create index if not exists person_audit_by_person_time
+    on persons.person_audit (organization_id, person_id, occurred_at desc);
+
+grant usage on schema persons to authenticated;
+grant select, insert, update on persons.person to authenticated;
+grant select, insert on persons.person_identifier to authenticated;
+grant select, insert, update on persons.person_contact to authenticated;
+grant select, insert, update on persons.person_organization_link to authenticated;
+grant select, insert on persons.person_audit to authenticated;
+
+do $$
+declare table_name text;
+begin
+    foreach table_name in array array['person', 'person_identifier', 'person_contact', 'person_organization_link', 'person_audit'] loop
+        execute format('alter table persons.%I enable row level security', table_name);
+        execute format('alter table persons.%I force row level security', table_name);
+        execute format('drop policy if exists persons_tenant_select on persons.%I', table_name);
+        execute format('drop policy if exists persons_tenant_insert on persons.%I', table_name);
+        execute format('drop policy if exists persons_tenant_update on persons.%I', table_name);
+        execute format('create policy persons_tenant_select on persons.%I for select using (organization_id = current_setting(''app.organization_id'', true))', table_name);
+        execute format('create policy persons_tenant_insert on persons.%I for insert with check (organization_id = current_setting(''app.organization_id'', true))', table_name);
+        execute format('create policy persons_tenant_update on persons.%I for update using (organization_id = current_setting(''app.organization_id'', true)) with check (organization_id = current_setting(''app.organization_id'', true))', table_name);
+    end loop;
 end $$;
 
--- No service-role bypass is implied here. The host must use a role for which
--- FORCE RLS applies and must clear transaction settings on pooled connections.
+comment on schema persons is 'Tenant-aware common Persons data; organization_id is the isolation boundary.';
