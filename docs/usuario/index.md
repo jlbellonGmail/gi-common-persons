@@ -12,6 +12,7 @@ fuente canónica, regenerar adaptadores y declarar modelos por ejecución.
 - [Personas Identificadores](personas-identificadores.md)
 - [Contactos Vinculos](contactos-vinculos.md)
 - [Persistencia Aislamiento](persistencia-aislamiento.md)
+- [Persistencia Supabase real](persistencia-supabase-real.md)
 - [Api Publica](api-publica.md)
 - [Readiness Integracion](readiness-integracion.md)
 
