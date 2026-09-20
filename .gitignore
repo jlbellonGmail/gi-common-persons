@@ -28,6 +28,9 @@ build/
 .env.*
 !.env.example
 
+# Supabase CLI local link/runtime state
+supabase/.temp/
+
 # OS
 .DS_Store
 Thumbs.db
