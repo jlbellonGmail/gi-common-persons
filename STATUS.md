@@ -28,3 +28,33 @@ bloqueada; no anunciar READY_FOR_PR mientras falten decisiones y evidencia.
 El script heredado de STATUS imprime v2.0.0 en su bloque automático: es un valor
 del motor del Template, no una versión de Persons. La procedencia real es v2.0.1.
 Las advertencias sobre remoto/CI ausentes son esperadas y no equivalen a CI verde.
+
+## Verificación de esta reentrada (2026-09-20)
+
+- Baseline inicial comprometida en `e9bdea8`.
+- Template adoptado: `v2.0.1` / `fa8aade44fe808635e01916da7347b1d1837da7a`.
+- Core público inspeccionado en `v0.1.0` / `673a9a8`; Persons sólo puede
+  consumir `CoreApi`, respuestas JSON y errores públicos.
+- Suite del circuito: `267 passed in 426.97s`.
+- No existe `origin`, PR, CI ni work unit oficial iniciada.
+- No se implementó producto ni se modificaron Core o verticales.
+
+<!-- STATUS:AUTO:BEGIN -->
+
+## Estado verificado automáticamente
+
+- Actualizado: 2026-09-20T04:36:46Z
+- Versión: v2.0.0
+- Rama: codex/fundacion-persons
+- HEAD: e9bdea8f1b2b259a600903977edd4960007942d4
+- Remoto: UNKNOWN / sin remoto
+- Working tree: dirty
+- Worktrees: 3
+- Worktrees Git: 3
+- Unidades activas: ninguna
+- PR activa: UNKNOWN / sin PR abierta
+- CI: UNKNOWN / sin CI verificable
+- CI vigente: UNKNOWN / sin CI verificable
+- Última release: UNKNOWN / no disponible
+
+<!-- STATUS:AUTO:END -->
