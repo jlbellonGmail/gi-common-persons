@@ -18,6 +18,7 @@ node_modules/
 # MkDocs build output
 site/
 build/
+*.egg-info/
 
 # opencode local runtime state (wiring stays versioned via .opencode/.gitignore)
 .opencode/node_modules/
