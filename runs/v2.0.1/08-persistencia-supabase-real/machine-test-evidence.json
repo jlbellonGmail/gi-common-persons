@@ -1,0 +1,1 @@
+{"integration_test":"tests_persons/test_supabase_integration.py","requires":["PERSONS_TEST_DATABASE_URL","psycopg[binary]"],"status":"passed","result":"1 passed","project_ref":"gletzbwuvmwjkmoufmyj","method":"temporary API login role over regional Supabase pooler; secret held in memory"}

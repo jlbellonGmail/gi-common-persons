@@ -1,0 +1,30 @@
+{
+  "project_ref": "gletzbwuvmwjkmoufmyj",
+  "cli_version": "2.117.0",
+  "command": "supabase db push --linked",
+  "result": "blocked",
+  "attempts": [
+    {
+      "command": "supabase projects list",
+      "error_code": "LegacyProjectsListNetworkError",
+      "error": "Transport error (GET https://api.supabase.com/v1/projects)"
+    },
+    {
+      "command": "supabase db push --linked --debug",
+      "error_code": "LegacyDbConfigLoginRoleNetworkError",
+      "error": "failed to initialise login role: TransportError",
+      "endpoint": "https://api.supabase.com/v1/projects/gletzbwuvmwjkmoufmyj/cli/login-role"
+    },
+    {
+      "command": "supabase login",
+      "error_code": "LegacyLoginMissingTokenError",
+      "error": "Cannot use automatic login flow inside non-TTY environments"
+    },
+    {
+      "command": "supabase link --project-ref gletzbwuvmwjkmoufmyj --debug",
+      "error_code": "LegacyLinkProjectStatusNetworkError",
+      "error": "Transport error (GET https://api.supabase.com/v1/projects/gletzbwuvmwjkmoufmyj)"
+    }
+  ],
+  "secrets_logged": false
+}
