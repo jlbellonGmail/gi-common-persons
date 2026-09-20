@@ -1,6 +1,6 @@
 # Estado operativo de GI-COMMON-PERSONS
 
-Fecha de inspección: 2026-09-20. Estado: bootstrap local y diseño propuesto.
+Fecha de inspección: 2026-09-20. Estado: Milestone 02–07 implementado y listo para PR.
 
 ## Hechos
 
@@ -21,9 +21,8 @@ Fecha de inspección: 2026-09-20. Estado: bootstrap local y diseño propuesto.
 
 ## Próximo paso
 
-Revisar los diseños y las dependencias. Formalizar la unidad 01 con remoto real,
-ASSESS sobre su diff y revisión del estado vigente. Continuar sólo la unidad no
-bloqueada; no anunciar READY_FOR_PR mientras falten decisiones y evidencia.
+Esperar el único HITL sobre la PR #2 con CI verde: `MERGE` o `NO MERGE`.
+No iniciar otro Milestone ni desplegar infraestructura desde esta rama.
 
 El script heredado de STATUS imprime v2.0.0 en su bloque automático: es un valor
 del motor del Template, no una versión de Persons. La procedencia real es v2.0.1.
@@ -43,10 +42,10 @@ Las advertencias sobre remoto/CI ausentes son esperadas y no equivalen a CI verd
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-20T06:01:39Z
+- Actualizado: 2026-09-20T06:08:55Z
 - Versión: v2.0.0
 - Rama: milestone/v2.0.1-persons-implementation-02-07
-- HEAD: b71f5d68360bac80e4b9f51113aa63ba342c3edb
+- HEAD: 089121f413a85642653417c4a52449356796e69a
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
 - Worktrees: 2
