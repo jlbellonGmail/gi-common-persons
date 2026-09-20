@@ -43,18 +43,18 @@ Las advertencias sobre remoto/CI ausentes son esperadas y no equivalen a CI verd
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-20T04:37:40Z
+- Actualizado: 2026-09-20T04:59:59Z
 - Versión: v2.0.0
-- Rama: codex/fundacion-persons
-- HEAD: 4d9cdb0999367f9545e973681f86841f5cc909bc
-- Remoto: UNKNOWN / sin remoto
+- Rama: develop
+- HEAD: ed90b5e349857e6bf7e8e212a7eae127c30b719a
+- Remoto: https://github.com/jlbellonGmail/gi-common-persons
 - Working tree: dirty
 - Worktrees: 3
 - Worktrees Git: 3
 - Unidades activas: ninguna
 - PR activa: UNKNOWN / sin PR abierta
-- CI: UNKNOWN / sin CI verificable
-- CI vigente: UNKNOWN / sin CI verificable
+- CI:  @ ac80763ed2f2368a5572f1aceac016169d984c38
+- CI vigente:  @ ac80763ed2f2368a5572f1aceac016169d984c38
 - Última release: UNKNOWN / no disponible
 
 <!-- STATUS:AUTO:END -->
