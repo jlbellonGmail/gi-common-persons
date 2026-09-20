@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: gi-common-persons
+Version: 0.1.0
+Summary: Tenant-aware common Persons library for GI
+Requires-Python: >=3.12

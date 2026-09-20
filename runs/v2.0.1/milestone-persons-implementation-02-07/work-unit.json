@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "mode": "milestone",
-  "slug": "02-07-persons-implementation",
+  "slug": "persons-implementation-02-07",
   "items": [
     "02-contrato-core",
     "03-personas-identificadores",

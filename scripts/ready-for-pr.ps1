@@ -97,7 +97,7 @@ $baseBranch = if ([string]::IsNullOrWhiteSpace($env:BASE_BRANCH)) { "develop" } 
 $currentBranch = Get-CheckedOutput "git" @("branch", "--show-current")
 
 if ($Mode -eq "Milestone") {
-    $manifestPath = "runs/milestone-$Slug/work-unit.json"
+    $manifestPath = Get-MilestoneManifestPath -Slug $Slug -Version $Version
     $manifest = Read-WorkUnitManifest -Path $manifestPath
     $items = @($manifest.Items)
     $contractTitle = $Title -replace "^Milestone ", ""

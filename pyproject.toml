@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gi-common-persons"
+version = "0.1.0"
+description = "Tenant-aware common Persons library for GI"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["gi_persons*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests_persons", "tests"]
+addopts = "-q"

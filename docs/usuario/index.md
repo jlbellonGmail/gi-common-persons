@@ -8,6 +8,12 @@ Ver también [Circuito agentico](circuito-agentico.md) para operar la
 fuente canónica, regenerar adaptadores y declarar modelos por ejecución.
 
 <!-- FEATURE_LINKS_START -->
+- [Contrato Core](contrato-core.md)
+- [Personas Identificadores](personas-identificadores.md)
+- [Contactos Vinculos](contactos-vinculos.md)
+- [Persistencia Aislamiento](persistencia-aislamiento.md)
+- [Api Publica](api-publica.md)
+- [Readiness Integracion](readiness-integracion.md)
 
 - [Fuente unica router modelos](fuente-unica-router-modelos.md)
 - [Code Reviewer Y Sdd](code-reviewer-y-sdd.md)
