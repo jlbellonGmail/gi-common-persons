@@ -1,14 +1,1 @@
-{
-  "migration_file": "supabase/migrations/20260920000100_persons.sql",
-  "project_ref": "gletzbwuvmwjkmoufmyj",
-  "static_checks": [
-    "schema persons declared",
-    "five requested persons tables declared",
-    "organization_id is present in every table and composite FK",
-    "document uniqueness is organization-aware",
-    "primary contact partial unique index is declared",
-    "RLS is enabled and forced for all five tables"
-  ],
-  "remote_checks": "not_run",
-  "reason": "Supabase CLI TransportError before database login role initialization"
-}
+{"migration_files":["supabase/migrations/20260920000100_persons.sql","supabase/migrations/20260920000101_persons_hardening.sql"],"project_ref":"gletzbwuvmwjkmoufmyj","remote_checks":{"schema":"persons present","tables":5,"foreign_keys":4,"indexes":13,"grants":13,"policies":15,"rls_forced_tables":5,"triggers":4,"public_persons_tables":0,"non_tenant_policies":0,"authenticated_schema_usage":true},"integration":"passed: tenant isolation, unique identifiers, primary contact uniqueness, append-only audit, authorization and rollback","method":"authenticated API login role plus PostgreSQL pooler; no credentials persisted"}

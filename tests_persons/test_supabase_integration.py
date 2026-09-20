@@ -30,7 +30,7 @@ def test_persons_schema_constraints_rls_and_rollback():
     with psycopg.connect(dsn) as connection:
         with connection.transaction():
             with connection.cursor() as cursor:
-                cursor.execute("set local role authenticated")
+                cursor.execute("set role authenticated")
                 cursor.execute("select set_config('app.organization_id', %s, true)", (org_a,))
                 cursor.execute(
                     """
@@ -51,7 +51,7 @@ def test_persons_schema_constraints_rls_and_rollback():
                     """
                     select c.relname, c.relrowsecurity, c.relforcerowsecurity
                     from pg_class c join pg_namespace n on n.oid = c.relnamespace
-                    where n.nspname = 'persons'
+                    where n.nspname = 'persons' and c.relkind = 'r'
                     order by c.relname
                     """
                 )
@@ -111,14 +111,16 @@ def test_persons_schema_constraints_rls_and_rollback():
                 cursor.execute("select count(*) from persons.person")
                 assert cursor.fetchone()[0] == 0
                 with pytest.raises(psycopg.errors.InsufficientPrivilege):
-                    cursor.execute(
-                        "insert into persons.person (organization_id, person_id, display_name, created_by, updated_by) values (%s, %s, 'cross-tenant', 'u', 'u')",
-                        (org_a, uuid4()),
-                    )
+                    with connection.transaction():
+                        cursor.execute(
+                            "insert into persons.person (organization_id, person_id, display_name, created_by, updated_by) values (%s, %s, 'cross-tenant', 'u', 'u')",
+                            (org_a, uuid4()),
+                        )
 
                 cursor.execute("select set_config('app.organization_id', %s, true)", (org_a,))
                 with pytest.raises(psycopg.errors.InsufficientPrivilege):
-                    cursor.execute("update persons.person_audit set outcome = 'tampered'")
+                    with connection.transaction():
+                        cursor.execute("update persons.person_audit set outcome = 'tampered'")
 
         with connection.cursor() as cursor:
             cursor.execute("select count(*) from persons.person where person_id = %s", (person_id,))

@@ -102,6 +102,43 @@ grant select, insert, update on persons.person_contact to authenticated;
 grant select, insert, update on persons.person_organization_link to authenticated;
 grant select, insert on persons.person_audit to authenticated;
 
+create or replace function persons.touch_updated_at()
+returns trigger
+language plpgsql
+as $$
+begin
+    new.updated_at = timezone('utc', now());
+    return new;
+end;
+$$;
+
+create or replace function persons.reject_audit_mutation()
+returns trigger
+language plpgsql
+as $$
+begin
+    raise exception 'persons.person_audit is append-only';
+end;
+$$;
+
+create trigger person_touch_updated_at
+before update on persons.person
+for each row execute function persons.touch_updated_at();
+
+create trigger person_contact_touch_updated_at
+before update on persons.person_contact
+for each row execute function persons.touch_updated_at();
+
+create trigger person_audit_reject_update
+before update on persons.person_audit
+for each row execute function persons.reject_audit_mutation();
+
+create trigger person_audit_reject_delete
+before delete on persons.person_audit
+for each row execute function persons.reject_audit_mutation();
+
+revoke update, delete on persons.person_audit from authenticated;
+
 do $$
 declare table_name text;
 begin

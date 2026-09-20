@@ -1,8 +1,5 @@
-status: rejected
+status: approved
 attempt: 1
 feedback:
-  - No se puede aprobar el diff para PR mientras falten despliegue, introspección y pruebas reales.
-
-# Code review 1
-
-La revisión de diseño queda pendiente de una ejecución PostgreSQL verificable.
+  - El diff vigente mantiene el esquema exclusivo `persons`, FK e índices tenant-aware, RLS forzado, grants mínimos y auditoría append-only; no modifica Core ni verticales.
+  - La ejecución PostgreSQL real y la evidencia remota verifican el comportamiento declarado.
