@@ -1,7 +1,36 @@
-# Unidad 08 — resumen
+# Unidad 08 — Persistencia Supabase real
 
-La migración y el hardening usan exclusivamente `persons.*` y fueron aplicados al proyecto `gi-dev` (`gletzbwuvmwjkmoufmyj`). La CLI continúa fallando contra `api.supabase.com`; el despliegue se verificó con el login role temporal de la API, en memoria, mediante el pooler PostgreSQL regional. No se registraron credenciales.
+Estado: READY_FOR_PR
+Versión: v2.0.1
+Tipo: Feature
+SDD: runs/v2.0.1/08-persistencia-supabase-real/sdd.json
+PR: pendiente de apertura
+Merge: no ejecutado
 
-Verificación remota: esquema presente; cinco tablas; cuatro FK compuestas tenant-aware; trece índices; trece grants; quince políticas; cinco tablas con RLS habilitado y forzado; cuatro triggers; cero tablas Persons en `public`; cero políticas sin referencia tenant. La prueba Python real pasó (1 passed), cubriendo aislamiento entre dos organizaciones, unicidad, autorización, auditoría append-only y rollback.
+## Objetivo
 
-La suite local tuvo 265 tests pasados y dos fallos de infraestructura en tests históricos de Git sobre directorios temporales (`Permission denied` al escribir `.git/objects`), no fallos de Persons. La unidad queda preparada para el gate `READY_FOR_PR`.
+Corregir, desplegar y verificar la persistencia tenant-aware de Persons en Supabase real, sin modificar Core ni verticales.
+
+## Resultado
+
+La migración y el hardening usan exclusivamente `persons.*` y fueron aplicados al proyecto `gi-dev` (`gletzbwuvmwjkmoufmyj`).
+
+## Cambios principales
+
+Se corrigieron las cinco tablas, FK compuestas, índices, grants, triggers, auditoría append-only y políticas RLS forzadas. Se agregó la prueba PostgreSQL real y evidencia reproducible.
+
+## Validación
+
+El remoto confirmó esquema, cinco tablas, cuatro FK, trece índices, trece grants, quince políticas, cinco tablas con RLS habilitado y forzado, cuatro triggers, cero tablas Persons en `public` y cero políticas sin referencia tenant. La prueba Python real pasó: 1 passed. La suite local tuvo 265 pasados y dos fallos históricos de infraestructura Windows al escribir objetos Git temporales.
+
+## Decisiones
+
+La CLI mantiene un bloqueo de transporte contra `api.supabase.com`. Se usó la API autenticada para obtener un login role temporal y el pooler regional PostgreSQL; el secreto se mantuvo sólo en memoria.
+
+## Incidencias
+
+Los dos fallos de la suite completa fueron `Permission denied` en `.git/objects` de repositorios temporales de tests históricos; no afectan el producto Persons. Quedan documentados en `test-report-1.md`.
+
+## Detalle
+
+La evidencia primaria está en `verify.sql`, `integration.sql`, `remote-execution.json`, `validation-evidence.json` y `machine-test-evidence.json`.
