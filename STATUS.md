@@ -42,15 +42,15 @@ Las advertencias sobre remoto/CI ausentes son esperadas y no equivalen a CI verd
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-20T06:08:55Z
+- Actualizado: 2026-09-20T11:14:20Z
 - Versión: v2.0.0
-- Rama: milestone/v2.0.1-persons-implementation-02-07
-- HEAD: 089121f413a85642653417c4a52449356796e69a
+- Rama: develop
+- HEAD: fe456706efcd4d47426aaa7a90f33912b420a7a5
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
-- Worktrees: 2
-- Worktrees Git: 2
-- Unidades activas: = [milestone/v2.0.1-persons-implementation-02-07]
+- Worktrees: 3
+- Worktrees Git: 3
+- Unidades activas: ninguna
 - PR activa: UNKNOWN / sin PR abierta
 - CI: UNKNOWN / sin CI verificable
 - CI vigente: UNKNOWN / sin CI verificable
