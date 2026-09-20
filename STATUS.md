@@ -43,10 +43,10 @@ Las advertencias sobre remoto/CI ausentes son esperadas y no equivalen a CI verd
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-20T04:36:46Z
+- Actualizado: 2026-09-20T04:37:40Z
 - Versión: v2.0.0
 - Rama: codex/fundacion-persons
-- HEAD: e9bdea8f1b2b259a600903977edd4960007942d4
+- HEAD: 4d9cdb0999367f9545e973681f86841f5cc909bc
 - Remoto: UNKNOWN / sin remoto
 - Working tree: dirty
 - Worktrees: 3
