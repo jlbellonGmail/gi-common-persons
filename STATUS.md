@@ -42,18 +42,18 @@ Las advertencias sobre remoto/CI ausentes son esperadas y no equivalen a CI verd
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-20T14:24:24Z
+- Actualizado: 2026-09-20T14:38:29Z
 - Versión: v2.0.0
-- Rama: feature/v2.0.1-08-persistencia-supabase-real
-- HEAD: 396b251b7251fc438b3558a3338c8a7b5b468600
-- Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
+- Rama: develop
+- HEAD: df45153042a947c492d355ee888d9437dcb5f8d5
+- Remoto: https://github.com/jlbellonGmail/gi-common-persons
 - Working tree: dirty
-- Worktrees: 2
-- Worktrees Git: 2
-- Unidades activas: = [feature/v2.0.1-08-persistencia-supabase-real]
+- Worktrees: 3
+- Worktrees Git: 3
+- Unidades activas: ninguna
 - PR activa: UNKNOWN / sin PR abierta
-- CI: UNKNOWN / sin CI verificable
-- CI vigente: UNKNOWN / sin CI verificable
+- CI:  @ 2758da87e6ee4ba2b11c52c8d29ea6fd0e7af789
+- CI vigente:  @ 2758da87e6ee4ba2b11c52c8d29ea6fd0e7af789
 - Última release: UNKNOWN / no disponible
 
 <!-- STATUS:AUTO:END -->
