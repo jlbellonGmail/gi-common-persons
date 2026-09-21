@@ -43,10 +43,10 @@ Las advertencias sobre remoto/CI ausentes son esperadas y no equivalen a CI verd
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-21T12:59:42Z
+- Actualizado: 2026-09-21T13:06:11Z
 - Versión: v2.0.0
 - Rama: feature/v2.0.1-09-core-integration
-- HEAD: f07757ceeb579f099fcf83dafa4a852cec83cfac
+- HEAD: 0b9e60f8d12f832d1de10d642f29c144d52c087f
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
 - Worktrees: 3
