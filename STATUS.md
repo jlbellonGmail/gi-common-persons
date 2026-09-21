@@ -59,15 +59,15 @@ v0.2.1. La evidencia vigente de GitHub prevalece sobre cualquier snapshot.
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-21T14:00:00Z
+- Actualizado: 2026-09-21T14:31:29Z
 - Versión: v2.0.0
 - Rama: develop
-- HEAD: a4ca82f46bc77caf161c9b0ac5c4c25f5406528a
+- HEAD: 31fce0fe66c16ec7e411251b0611c095c222a215
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
-- Worktrees: 2
-- Worktrees Git: 2
-- Unidades activas: = [feature/v2.0.1-08-persistencia-supabase-real]
+- Worktrees: 3
+- Worktrees Git: 3
+- Unidades activas: ninguna
 - PR activa: UNKNOWN / sin PR abierta
 - CI: UNKNOWN / sin CI verificable
 - CI vigente: UNKNOWN / sin CI verificable
