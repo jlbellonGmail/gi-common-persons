@@ -4,6 +4,7 @@ from .models import RequestContext
 from .ports import CoreApi
 
 SUPPORTED_CORE_CONTRACT = "0.1.0"
+SUPPORTED_IDENTITY_CONTRACT = "0.2.0"
 
 class Authorizer:
     def __init__(self, api: CoreApi): self.api = api

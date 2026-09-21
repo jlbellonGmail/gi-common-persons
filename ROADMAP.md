@@ -11,10 +11,12 @@ pendientes hasta atravesar el circuito real. El expediente bootstrap no las cier
 - [x] 06-api-publica — fachada versionada, errores, paginación y pruebas de consumidores sin dependencias inversas.
 - [x] 07-readiness-integracion — CI real, auditoría, contrato de distribución y evidencia para HITL.
 - [x] 08-persistencia-supabase-real — corregir, validar, desplegar y verificar la migración tenant-aware en Supabase real.
+- [-] 09-integracion-core-v021 — integrar Core v0.2.1 publicado, identidad tenant-aware, link/unlink idempotente, auditoría, pruebas y PR lista para revisión humana.
 
 Referencias y aceptación: [plan técnico](docs/tecnica/plan-persons.md).
 `[ ]` pendiente; `[-]` sólo READY_FOR_PR real; `[x]` sólo después del merge
 confirmado a develop. No se decide un tag ni una release en este documento.
+
 
 
 

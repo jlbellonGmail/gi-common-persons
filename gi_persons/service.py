@@ -1,7 +1,7 @@
 """Application use cases; every operation authorizes before tenant access."""
 from dataclasses import replace
 from uuid import UUID, uuid4
-from .authorization import Authorizer
+from .authorization import Authorizer, SUPPORTED_IDENTITY_CONTRACT
 from .errors import *
 from .models import *
 from .normalization import *
@@ -68,5 +68,53 @@ class PersonsService:
         if limit<1 or limit>100: raise ValidationError()
         safe={name_key(k) for k in keys if isinstance(k,str) and k.strip()}
         return self.store.candidates(ctx.organization_id,safe,limit)
-    def link_identity(self, ctx, *args, **kwargs):
-        self.auth.require(ctx,"persons:identity:link"); raise CapabilityUnavailableError()
+    def _core_identity_call(self, operation):
+        try:
+            response = operation()
+        except Exception as exc:
+            name = type(exc).__name__.lower()
+            if "conflict" in name:
+                raise IdentityConflictError() from exc
+            if "authorization" in name or "isolation" in name or "forbidden" in name:
+                raise ForbiddenError() from exc
+            if "notfound" in name or "not_found" in name:
+                raise NotFoundError() from exc
+            raise CoreUnavailableError() from exc
+        if not isinstance(response, dict) or response.get("contract_version") != SUPPORTED_IDENTITY_CONTRACT:
+            raise UnsupportedCoreContractError()
+        return response
+
+    def resolve_identity(self, ctx, user_id, external_subject):
+        """Resolve a Core identity inside the request tenant only."""
+        self.auth.require(ctx, "persons:identity:read")
+        response = self._core_identity_call(
+            lambda: self.auth.api.validate_identity(ctx.organization_id, str(user_id), external_subject),
+        )
+        if response.get("organization_id") != ctx.organization_id or response.get("valid") is not True:
+            raise ForbiddenError()
+        user = response.get("user")
+        if not isinstance(user, dict) or user.get("id") != str(user_id):
+            raise ForbiddenError()
+        return response
+
+    def link_identity(self, ctx, person_id, user_id, external_subject):
+        self.auth.require(ctx, "persons:identity:link")
+        self.get_person(ctx, person_id)
+        # Core receives only the opaque reference. The Person aggregate never crosses this boundary.
+        response = self._core_identity_call(
+            lambda: self.auth.api.link_identity(ctx.user_id, ctx.organization_id, str(person_id), str(user_id), external_subject),
+        )
+        with self._transaction():
+            self._audit(ctx, person_id, "identity.link", "success", None)
+        return response
+
+    def unlink_identity(self, ctx, person_id):
+        self.auth.require(ctx, "persons:identity:unlink")
+        self.get_person(ctx, person_id)
+        response = self._core_identity_call(
+            lambda: self.auth.api.unlink_identity(ctx.user_id, ctx.organization_id, str(person_id)),
+        )
+        with self._transaction():
+            outcome = "success" if response.get("removed") is True else "success_idempotent"
+            self._audit(ctx, person_id, "identity.unlink", outcome, None)
+        return response

@@ -8,11 +8,10 @@ normalización determinista, concurrencia optimista, auditoría y puertos de
 persistencia. `MemoryStore` sirve para pruebas; la migración PostgreSQL/RLS
 está en `supabase/migrations/` y no se despliega automáticamente.
 
-La única integración de plataforma permitida es la superficie pública de
-`gi-platform-core` `v0.1.0`: `CoreApi.authorize`, respuestas JSON y errores
-públicos. No se importan stores, tablas ni entidades privadas. El enlace a
-Identity está deshabilitado hasta que Core/host ofrezca el contrato público
-faltante.
+La integración de plataforma usa la superficie pública de
+`gi-platform-core==0.2.1`: `CoreApi.authorize` (contrato 0.1.0) y
+`validate_identity`, `link_identity`, `unlink_identity` (identidad 0.2.0).
+Core recibe `person_id` como referencia opaca; nunca recibe el objeto Person.
 
 Documentación: [implementación técnica](docs/tecnica/persons.md), [contratos](docs/tecnica/contrato-core.md), [modelo](docs/tecnica/modelo-persons.md) y [uso](docs/usuario/persons.md).
 

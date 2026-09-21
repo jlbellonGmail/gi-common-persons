@@ -56,10 +56,10 @@ def test_contacts_preserve_original_and_primary_is_unique():
     assert first.value_original==" Alice@Example.COM "
     assert sum(c.is_primary for c in contacts)==1 and second.is_primary
 
-def test_phone_requires_explicit_country_and_identity_is_disabled():
+def test_phone_requires_explicit_country_and_identity_requires_public_contract():
     _,_,s=setup(); p=s.create_person(ctx(),"A")
     with pytest.raises(ValidationError): s.add_contact(ctx(),p.person_id,1,"phone","5551234")
-    with pytest.raises(CapabilityUnavailableError): s.link_identity(ctx(),p.person_id)
+    with pytest.raises(CoreUnavailableError): s.link_identity(ctx(),p.person_id,"core-user","subject")
 
 def test_duplicate_candidates_are_bounded_and_tenant_scoped():
     _,_,s=setup(); p=s.create_person(ctx(),"Ada Lovelace")

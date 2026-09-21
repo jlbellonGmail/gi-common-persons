@@ -16,6 +16,8 @@ para auditar el estado acumulado del repo con checks verificables, no una
 calificación subjetiva.
 
 <!-- FEATURE_LINKS_START -->
+- [Integracion Core V021](integracion-core-v021.md)
+- [Core v0.2.1 y identidad](core-integration-v021.md)
 - [Contrato Core](contrato-core.md)
 - [Personas Identificadores](personas-identificadores.md)
 - [Contactos Vinculos](contactos-vinculos.md)

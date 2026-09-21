@@ -21,7 +21,7 @@ columnas ni enums de esos roles ni importa los módulos consumidores.
 ```mermaid
 flowchart LR
   Consumidor[Módulos consumidores] --> Persons[Contratos públicos de Persons]
-  Persons --> Core[CoreApi 0.1.0]
+  Persons --> Core[CoreApi 0.1.0 / Identity 0.2.0]
   Host[Host autenticado] --> Persons
   Host --> Core
 ```
@@ -55,10 +55,10 @@ transporte, dominio/aplicación/puertos/adaptadores. Encaja con Core sin agregar
 un servidor HTTP ni framework por adelantado. Persistencia PostgreSQL detrás
 de un puerto es candidata, no desplegada ni habilitada en este bootstrap.
 
-El host suministra una instancia CoreApi configurada y un contexto confiable.
+El host suministra una instancia pública CoreApi 0.2.1 y un contexto confiable.
 Persons importa sólo CoreApi y errores públicos; no compone CoreService ni
 SupabaseCoreStore ni accede a CoreApi.service. El host resuelve sujeto de sesión
-a user_id; esa capacidad no está en CoreApi 0.1.0 y se trata como dependencia.
+a user_id. Core recibe person_id como referencia opaca y nunca el objeto Person.
 
 Fijar la primera prueba de compatibilidad al SHA de release inspeccionado.
 No depender de develop, rutas absolutas locales ni versiones flotantes. Antes
@@ -81,8 +81,8 @@ aislamiento por sede de los datos generales sin una regla de negocio explícita.
 
 Los permisos propuestos están en contratos-persons.md. Se registran por
 provisioning confiable de Core; no se duplican evaluadores de roles en Persons.
-La implementación productiva queda condicionada al manejo efectivo de estados
-activos y revocaciones; el snapshot actual de Core no alcanza para prometerlos.
+La implementación exige estados activos y revocaciones evaluados por Core en
+cada llamada; Persons no duplica esa política ni cachea decisiones positivas.
 
 ## ADR-P04: auditoría y privacidad
 

@@ -7,7 +7,9 @@ name = "gi-common-persons"
 version = "0.1.0"
 description = "Tenant-aware common Persons library for GI"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "gi-platform-core==0.2.1",
+]
 
 [tool.setuptools.packages.find]
 include = ["gi_persons*"]

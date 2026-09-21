@@ -1,56 +1,69 @@
 # Estado operativo de GI-COMMON-PERSONS
 
-Fecha de inspección: 2026-09-20. Estado: Milestone 02–07 implementado y listo para PR.
+Fecha de inspección: 2026-09-21. Estado: Feature 09 en READY_FOR_PR; PR abierta y pendiente de decisión HITL.
 
 ## Hechos
 
-- Core y Template resueltos en C:\Proyectos; D:\proyectos no está disponible en esta sesión.
-- No se encontró Persons bajo C:\Proyectos antes del bootstrap ni entre los repositorios visibles de jlbellonGmail.
-- Core v0.1.0 y Template v2.0.1 publicados; commits exactos en README y expediente.
-- Se prepara snapshot del circuito v2.0.1 y diseño; no se implementa producto.
-- No se modificó Core, Template ni verticales. No se usaron datos ni credenciales de Supabase.
-- No hay remoto, PR, CI ni aprobación HITL de Persons. No hay unidad completada.
+- Core instalado y validado en versión `0.2.1`; Identity contract `0.2.0`.
+- Persons consume Core únicamente mediante su API pública: CoreApi `0.1.0` e
+  identidad `0.2.0`; Core recibe `person_id` como referencia opaca.
+- La unidad vigente es Feature 09 `09-integracion-core-v021`, en READY_FOR_PR
+  (`ROADMAP.md` conserva el estado `[-]`).
+- Rama actual: `feature/v2.0.1-09-core-integration`; worktree actual:
+  `C:\Proyectos\worktrees\v0.2.1-09-core-integration`.
+- PR #4 está abierta contra `develop`:
+  https://github.com/jlbellonGmail/gi-common-persons/pull/4
+- CI vigente de la PR está verde: `circuit-tests`, `product-tests` y
+  `local-reconciler-tests` completaron con éxito.
+- El merge no se realizó. El gate `complete-approved-pr` permanece sin
+  autorización HITL, como exige el circuito.
+- Suite real: `267 passed in 422.90s`; Persons: `20 passed, 1 skipped` por
+  ausencia de `PERSONS_TEST_DATABASE_URL` para Supabase local.
+- Evidencia principal: `runs/v2.0.1/09-integracion-core-v021/`, incluyendo
+  `test-report-1.md`, `audit-1.md`, `code-review-1.md` y
+  `validation-evidence.json`.
+- No se modificó GI-PLATFORM-CORE ni `develop`; no se usaron credenciales
+  productivas de Supabase.
 
 ## Pendientes materiales
 
 1. RESUELTO: el usuario confirmó personas/documentos por organización y sin compartir entre tenants (2026-09-20).
-2. Resolver mapeo seguro entre sujeto autenticado y user_id de Core y política de enlace Identity.
-3. Resolver revocaciones/estados activos con el proveedor Core antes de habilitar producción.
-4. Definir jurisdicciones/tipos de identificador iniciales, retención y borrado; no inventar normativa.
-5. Confirmar remoto destino/visibilidad de Persons para iniciar unidad desde develop mediante el script oficial.
+2. Esperar revisión humana y decisión `MERGE` o `NO MERGE` sobre la PR #4.
+3. Si se aprueba, el circuito post-HITL debe verificar nuevamente CI antes de mergear.
+4. Las decisiones de retención/borrado y cualquier despliegue real permanecen fuera de esta unidad.
 
 ## Próximo paso
 
-Esperar el único HITL sobre la PR #2 con CI verde: `MERGE` o `NO MERGE`.
-No iniciar otro Milestone ni desplegar infraestructura desde esta rama.
+Esperar revisión humana sobre la PR #4. No hacer merge automático ni cerrar la
+unidad antes de una confirmación real de merge en `develop`.
 
-El script heredado de STATUS imprime v2.0.0 en su bloque automático: es un valor
-del motor del Template, no una versión de Persons. La procedencia real es v2.0.1.
-Las advertencias sobre remoto/CI ausentes son esperadas y no equivalen a CI verde.
+El bloque automático puede conservar la versión del motor del Template; la
+versión operativa de esta unidad es v2.0.1 y la dependencia integrada es Core
+v0.2.1. La evidencia vigente de GitHub prevalece sobre cualquier snapshot.
 
-## Verificación de esta reentrada (2026-09-20)
+## Verificación de esta reentrada (2026-09-21)
 
 - Baseline inicial comprometida en `e9bdea8`.
 - Template adoptado: `v2.0.1` / `fa8aade44fe808635e01916da7347b1d1837da7a`.
-- Core público inspeccionado en `v0.1.0` / `673a9a8`; Persons sólo puede
-  consumir `CoreApi`, respuestas JSON y errores públicos.
-- Suite del circuito: `267 passed in 426.97s`.
-- No existe `origin`, PR, CI ni work unit oficial iniciada.
-- No se implementó producto ni se modificaron Core o verticales.
+- Core público verificado en release `v0.2.1`; contratos `CoreApi 0.1.0` e
+  Identity `0.2.0`.
+- Suite completa: `267 passed in 422.90s`; suite Persons: `20 passed, 1 skipped`.
+- PR #4 abierta contra `develop`, con CI verde y sin merge.
+- Feature 09 publicada en la rama y worktree actuales, con ROADMAP en READY_FOR_PR.
 
 <!-- STATUS:AUTO:BEGIN -->
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-20T14:39:32Z
+- Actualizado: 2026-09-21T13:32:30Z
 - Versión: v2.0.0
-- Rama: develop
-- HEAD: 57ddfe2a188dad22e59b5f0940289d1f0e37ce3f
+- Rama: feature/v2.0.1-09-core-integration
+- HEAD: 4d679e871d2e1f4692395d2797468ec8b06a90ff
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
-- Worktrees: 2
-- Worktrees Git: 2
-- Unidades activas: = [feature/v2.0.1-08-persistencia-supabase-real]
+- Worktrees: 3
+- Worktrees Git: 3
+- Unidades activas: = [feature/v2.0.1-09-core-integration]; = [feature/v2.0.1-08-persistencia-supabase-real]
 - PR activa: UNKNOWN / sin PR abierta
 - CI: UNKNOWN / sin CI verificable
 - CI vigente: UNKNOWN / sin CI verificable
