@@ -1,0 +1,20 @@
+{
+  "dependency": {
+    "name": "gi-platform-core",
+    "version": "0.2.1",
+    "source": "GitHub Release v0.2.1 wheel",
+    "sha256": "9bc4c04ff0136a25559fb428aa8fd3a2e84ae69589a44fdd2ed9f91dd6a352cb"
+  },
+  "contracts": {"core_api": "0.1.0", "identity": "0.2.0", "compatible_with": "0.1.0"},
+  "invariants": [
+    "Core receives only opaque person_id",
+    "Every Persons operation authorizes with user_id and organization_id",
+    "Cross-tenant person and identity resolution is not exposed",
+    "link_identity and unlink_identity are idempotent and audited"
+  ],
+  "commands": [
+    "python -m pip install gi_platform_core-0.2.1-py3-none-any.whl",
+    "python -m pytest tests_persons -q",
+    "python -m pytest -q"
+  ]
+}

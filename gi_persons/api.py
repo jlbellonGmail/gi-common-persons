@@ -53,4 +53,10 @@ class PersonsApi:
     def find_duplicate_candidates(self, context, *, keys, limit=20):
         items=self.service.find_duplicate_candidates(context,keys=keys,limit=limit)
         return {"contract_version":"0.1.0","items":[{"person_id":str(p.person_id),"organization_id":p.organization_id,"reason":reason} for p,reason in items]}
+    def resolve_identity(self, context, user_id, external_subject):
+        return self.service.resolve_identity(context, str(user_id), external_subject)
+    def link_identity(self, context, person_id, user_id, external_subject):
+        return self.service.link_identity(context, UUID(str(person_id)), str(user_id), external_subject)
+    def unlink_identity(self, context, person_id):
+        return self.service.unlink_identity(context, UUID(str(person_id)))
     def error(self, exc: Exception): return exc.to_json() if isinstance(exc,PersonsError) else {"code":"INTERNAL_ERROR","message":"Persons operation failed."}

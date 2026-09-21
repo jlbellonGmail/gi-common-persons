@@ -29,3 +29,5 @@ class CapabilityUnavailableError(PersonsError):
     code = "CAPABILITY_UNAVAILABLE"; safe_message = "This capability is not available."
 class AuditFailureError(PersonsError):
     code = "AUDIT_UNAVAILABLE"; safe_message = "The operation could not be safely recorded."
+class IdentityConflictError(PersonsError):
+    code = "IDENTITY_CONFLICT"; safe_message = "The identity conflicts within the organization."

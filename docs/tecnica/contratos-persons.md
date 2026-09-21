@@ -1,7 +1,7 @@
 # Contratos de integración
 
 Todo nombre Persons de este documento es una PROPUESTA, no una API existente.
-CoreApi 0.1.0 sí existe y se distingue expresamente en la tabla siguiente.
+Core v0.2.1 expone CoreApi 0.1.0 y el contrato de identidad 0.2.0.
 
 ## Core disponible
 
@@ -46,7 +46,7 @@ permite sobrescribir actor u organización. No almacenar credenciales en Persons
 | add_contact / update_contact | context, person_id, expected_version, datos de contacto | contacto y nueva version | persons:contact:write |
 | find_duplicate_candidates | context, identificadores/contactos/nombre, limit | candidatos del tenant y motivo sin PII adicional | persons:duplicates:read; filtros sensibles exigen permiso de lectura correspondiente |
 | get_organization_link | context, person_id | vínculo con organización actual | persons:read |
-| link_identity / unlink_identity | context, person_id, expected_version, core_user_id y prueba confiable en el flujo acordado | vínculo opcional | persons:identity:link; DESHABILITADO hasta resolver D1 |
+| link_identity / unlink_identity | context, person_id, core_user_id y external_subject para validación pública | respuesta 0.2.0; idempotente | persons:identity:link / persons:identity:unlink; Core aplica permisos equivalentes |
 
 Los permisos son códigos candidatos compatibles con el formato namespace:acción
 de Core, no permisos existentes. Validar su formato con el Core real en U02.
@@ -88,7 +88,7 @@ política se decide en U06. Un timeout no autoriza a repetir una mutación a cie
 
 | ID | Necesidad | Alternativa y alcance | Bloquea |
 |---|---|---|---|
-| D1 | Resolver sujeto autenticado y validar identidad destino sin APIs privadas | Host con contrato verificable de resolución; o nueva operación pública Core, diseñada/versionada en su propio repo. Cardinalidad y prueba de enlace requieren decisión | Integración real y link_identity; no el diseño ni tests sintéticos |
+| D1 | Resolver sujeto autenticado y validar identidad destino sin APIs privadas | Resuelto por CoreApi identidad 0.2.0 y RequestContext confiable del host | — |
 | D2 | Estados active de user/org/location/role/permission y revocaciones frescas | Corregir proveedor + contrato de frescura/revocación. Instancia por request sólo mitiga snapshot; no corrige flags omitidos | Habilitación productiva de autorización |
 | D3 | Auditoría de dominio interoperable | Eventos propios transaccionales Persons; si se exige colector común, contrato público separado. No usar CoreStore/AuditSink internos | Colector central, no necesariamente persistencia local de trazas |
 | D4 | Contrato seguro de persistencia/RLS | Contexto de DB resuelto por host sin tabla privada; validar rol y pool. Core RLS no cubre Persons | Adaptador productivo/U05 |
