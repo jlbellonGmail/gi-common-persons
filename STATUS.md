@@ -71,18 +71,18 @@ v0.2.1. La evidencia vigente de GitHub prevalece sobre cualquier snapshot.
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-24T21:52:12Z
+- Actualizado: 2026-09-24T23:57:24Z
 - Versión: v2.0.0
-- Rama: milestone/persons-v030-v011
-- HEAD: 41073bb653fb4dfff639cd15ef5f5695095fd915
-- Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
+- Rama: develop
+- HEAD: 182ea72013d92c907de38c7c3759bb014d9b2569
+- Remoto: https://github.com/jlbellonGmail/gi-common-persons
 - Working tree: dirty
-- Worktrees: 2
-- Worktrees Git: 2
-- Unidades activas: = [milestone/persons-v030-v011]
+- Worktrees: 3
+- Worktrees Git: 3
+- Unidades activas: ninguna
 - PR activa: UNKNOWN / sin PR abierta
-- CI: UNKNOWN / sin CI verificable
-- CI vigente: UNKNOWN / sin CI verificable
+- CI:  @ 4e0bf72932cb42c71ff701ee21e6167f3d6433a1
+- CI vigente:  @ 4e0bf72932cb42c71ff701ee21e6167f3d6433a1
 - Última release: UNKNOWN / no disponible
 
 <!-- STATUS:AUTO:END -->
