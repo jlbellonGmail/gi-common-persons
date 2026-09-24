@@ -1,17 +1,14 @@
 # Matriz de compatibilidad
 
-| Componente | Versión consumida | Contrato público verificado | Evidencia |
+| Componente | Versión | Contrato | Artefacto |
 |---|---:|---|---|
-| GI Platform Core | `0.3.0` | `CoreApi` auth `0.1.0`, Identity `0.2.0`, Tenant `0.3.0` | tag local `6b10d564`, manifest `core-api-v0.3.0` |
-| GI Common Tenants | `0.1.1` | `TenantContext`, `TenantService`, `TenantsApi` | tag local `8af783f8`, pyproject e init |
-| Persons | `0.1.0` | `PersonsApi` `0.1.0` | `gi_persons/api.py` |
+| Core | `0.3.0` | Auth `0.1.0`, Identity `0.2.0`, Tenant `0.3.0` | GitHub Release `v0.3.0`, SHA256 `41830d62...537b47` |
+| Tenants | `0.1.1` | `TenantContext`, `TenantService`, `TenantsApi` | GitHub Release `v0.1.1`, SHA256 `0d43d24d...c0bda7` |
+| Persons | `0.1.0` | `PersonsApi` `0.1.0` | wheel de la PR #5 |
 
-Los tags fueron verificados sin modificar esos repositorios. `pip index
-versions` no encontró ninguno de los paquetes; la instalación limpia desde
-índice queda bloqueada. La instalación editable local produjo metadatos
-`0.3.0` y `0.1.1`; el módulo Tenants expone `__version__ == 0.1.0`,
-discrepancia upstream registrada y no corregida aquí.
+Los tres wheels se instalaron en un entorno virtual limpio. PyPI no ofrece los
+paquetes. El wheel publicado de Tenants tiene metadata `0.1.1` pero módulo
+`__version__ == 0.1.0`; la corrección está en PR #11 y no se modifica el tag.
 
-Persons no importa stores, tablas, CoreService ni entidades privadas. `Person`
-mantiene referencias opacas a `core_user_id`; la organización jurídica y su
-identidad técnica pertenecen a Core/Tenants.
+Persons sólo usa APIs públicas y mantiene `organization_id` como frontera de
+tenant; no consulta stores privados ni duplica organizaciones jurídicas.
