@@ -1,7 +1,8 @@
 # Contratos de integración
 
 Todo nombre Persons de este documento es una PROPUESTA, no una API existente.
-Core v0.2.1 expone CoreApi 0.1.0 y el contrato de identidad 0.2.0.
+Core v0.3.0 expone CoreApi 0.1.0, identidad 0.2.0 y Tenant 0.3.0; Tenants
+v0.1.1 expone TenantContext/TenantsApi públicos. Persons no accede stores.
 
 ## Core disponible
 

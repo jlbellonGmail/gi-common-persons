@@ -25,6 +25,10 @@ class Person:
     given_names: str | None = None
     family_names: str | None = None
     birth_date: date | None = None
+    gender_code: str | None = None
+    language_code: str | None = None
+    marital_status: str | None = None
+    death_date: date | None = None
     status: str = "active"
     version: int = 1
     created_at: datetime = field(default_factory=utcnow)
@@ -55,6 +59,71 @@ class Contact:
     verified_at: datetime | None = None
     created_at: datetime = field(default_factory=utcnow)
     updated_at: datetime = field(default_factory=utcnow)
+
+@dataclass(frozen=True, slots=True)
+class PersonAddress:
+    address_id: UUID
+    organization_id: str
+    person_id: UUID
+    address_type: str
+    line1: str
+    line2: str | None = None
+    city: str | None = None
+    region: str | None = None
+    postal_code: str | None = None
+    country_code: str = "AR"
+    is_primary: bool = False
+    created_at: datetime = field(default_factory=utcnow)
+    updated_at: datetime = field(default_factory=utcnow)
+
+@dataclass(frozen=True, slots=True)
+class GenderOption:
+    organization_id: str
+    code: str
+    label: str
+    active: bool = True
+
+@dataclass(frozen=True, slots=True)
+class PersonIdentity:
+    identity_id: UUID
+    organization_id: str
+    person_id: UUID
+    core_user_id: str
+    external_subject: str
+    status: str = "active"
+    created_at: datetime = field(default_factory=utcnow)
+    updated_at: datetime = field(default_factory=utcnow)
+
+@dataclass(frozen=True, slots=True)
+class TaxCategory:
+    category_id: UUID
+    country_code: str
+    code: str
+    label: str
+    valid_from: date
+    valid_to: date | None = None
+
+@dataclass(frozen=True, slots=True)
+class PersonTaxIdentifier:
+    tax_identifier_id: UUID
+    organization_id: str
+    person_id: UUID
+    country_code: str
+    identifier_type: str
+    value_original: str
+    value_normalized: str
+    created_at: datetime = field(default_factory=utcnow)
+
+@dataclass(frozen=True, slots=True)
+class PersonTaxProfile:
+    profile_id: UUID
+    organization_id: str
+    person_id: UUID
+    country_code: str
+    category_code: str
+    valid_from: date
+    valid_to: date | None = None
+    version: int = 1
 
 @dataclass(frozen=True, slots=True)
 class OrganizationLink:

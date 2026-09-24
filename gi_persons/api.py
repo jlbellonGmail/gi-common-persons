@@ -32,6 +32,14 @@ def public_identifier(identifier, reveal=False):
 def public_contact(contact):
     return json_value({"contract_version":"0.1.0","contact_id":contact.contact_id,"organization_id":contact.organization_id,"person_id":contact.person_id,"kind":contact.kind,"value":contact.value_normalized,"label":contact.label,"is_primary":contact.is_primary,"verified_at":contact.verified_at})
 
+# Keep the summary contract JSON-safe while exposing the optional physical-person fields.
+def summary(person):
+    return json_value({"contract_version":"0.1.0","organization_id":person.organization_id,"person_id":person.person_id,
+        "display_name":person.display_name,"given_names":person.given_names,"family_names":person.family_names,
+        "birth_date":person.birth_date,"gender_code":person.gender_code,"language_code":person.language_code,
+        "marital_status":person.marital_status,"death_date":person.death_date,"status":person.status,
+        "version":person.version,"created_at":person.created_at,"updated_at":person.updated_at})
+
 class PersonsApi:
     def __init__(self, service, cursor_secret: bytes): self.service=service; self.cursors=CursorCodec(cursor_secret)
     def create_person(self, context: RequestContext, **data): return summary(self.service.create_person(context,**data))
@@ -59,4 +67,13 @@ class PersonsApi:
         return self.service.link_identity(context, UUID(str(person_id)), str(user_id), external_subject)
     def unlink_identity(self, context, person_id):
         return self.service.unlink_identity(context, UUID(str(person_id)))
+    def add_address(self, context, person_id, expected_version, **data):
+        return json_value(self.service.add_address(context, UUID(str(person_id)), expected_version, **data))
+    def list_addresses(self, context, person_id):
+        return {"contract_version":"0.1.0","items":[json_value(a) for a in self.service.list_addresses(context,UUID(str(person_id)))]}
+    def list_genders(self, context): return {"contract_version":"0.1.0","items":[json_value(g) for g in self.service.list_genders(context)]}
+    def save_gender(self, context, code, label, *, active=True): return json_value(self.service.save_gender(context,code,label,active=active))
+    def get_identity(self, context, person_id): return json_value(self.service.get_identity(context,UUID(str(person_id))))
+    def add_tax_identifier(self, context, person_id, **data): return json_value(self.service.add_tax_identifier(context,UUID(str(person_id)),**data))
+    def list_tax_identifiers(self, context, person_id): return {"contract_version":"0.1.0","items":[json_value(i) for i in self.service.list_tax_identifiers(context,UUID(str(person_id)))]}
     def error(self, exc: Exception): return exc.to_json() if isinstance(exc,PersonsError) else {"code":"INTERNAL_ERROR","message":"Persons operation failed."}

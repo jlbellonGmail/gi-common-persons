@@ -1,5 +1,17 @@
 # Estado operativo de GI-COMMON-PERSONS
 
+## Unidad vigente (2026-09-24)
+
+- Milestone `10-persons-v030-v011` en rama `milestone/10-persons-v030-v011`.
+- Persons consume Core `0.3.0` y Tenants `0.1.1` por dependencias exactas.
+- Implementación, migración, documentación y evidencia están terminadas para
+  `READY_FOR_PR`; no se hizo merge.
+- PyPI no ofrece ninguno de los paquetes: instalación pública bloqueada.
+- Tags locales exactos, instalación limpia desde tags y compatibilidad pública
+  verificados; Tenants conserva la discrepancia de `__version__ == 0.1.0`.
+- QA Persons: `24 passed, 1 skipped` por falta de `PERSONS_TEST_DATABASE_URL`;
+  la migración real no se ejecutó ni se desplegó.
+
 Fecha de inspección: 2026-09-21. Estado: Feature 09 cerrada después del merge confirmado en `develop`.
 
 ## Hechos

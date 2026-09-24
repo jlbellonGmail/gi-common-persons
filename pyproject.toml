@@ -8,7 +8,8 @@ version = "0.1.0"
 description = "Tenant-aware common Persons library for GI"
 requires-python = ">=3.12"
 dependencies = [
-    "gi-platform-core==0.2.1",
+    "gi-platform-core==0.3.0",
+    "gi-common-tenants==0.1.1",
 ]
 
 [tool.setuptools.packages.find]

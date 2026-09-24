@@ -52,3 +52,4 @@ calificación subjetiva.
 - [[v2.0.0][F17] Auditoría final y release v2.0.0](auditoria-release-v2.md)
 
 <!-- FEATURE_LINKS_END -->
+# Compatibilidad vigente: [Core 0.3.0 / Tenants 0.1.1](compatibilidad-v030-v011.md)
