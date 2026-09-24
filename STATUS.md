@@ -12,11 +12,11 @@
 - QA Persons: `24 passed, 1 skipped` por falta de `PERSONS_TEST_DATABASE_URL`;
   la migración real no se ejecutó ni se desplegó.
 
-Fecha de inspección: 2026-09-21. Estado: Feature 09 cerrada después del merge confirmado en `develop`.
+Fecha de inspección: 2026-09-24. Estado: milestone 10 en PR #5 abierta, `READY_FOR_PR`; no se hizo merge.
 
 ## Hechos
 
-- Core instalado y validado en versión `0.2.1`; Identity contract `0.2.0`.
+- Core publicado e instalado en versión `0.3.0`; Tenants publicado e instalado en versión de distribución `0.1.1`; Identity contract `0.2.0`.
 - Persons consume Core únicamente mediante su API pública: CoreApi `0.1.0` e
   identidad `0.2.0`; Core recibe `person_id` como referencia opaca.
 - Feature 09 `09-integracion-core-v021` está cerrada en `ROADMAP.md` (`[x]`).
@@ -71,10 +71,10 @@ v0.2.1. La evidencia vigente de GitHub prevalece sobre cualquier snapshot.
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-24T19:29:22Z
+- Actualizado: 2026-09-24T21:47:07Z
 - Versión: v2.0.0
 - Rama: milestone/persons-v030-v011
-- HEAD: a3ddb1dc5c5ed2d883ff9eb960bbc3fcbf2d521e
+- HEAD: b76b8a1e3d0a01215e6e2bd68fd9412551cffd5e
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
 - Worktrees: 2
