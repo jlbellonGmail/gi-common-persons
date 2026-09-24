@@ -53,3 +53,4 @@ calificación subjetiva.
 
 <!-- FEATURE_LINKS_END -->
 # Compatibilidad vigente: [Core 0.3.0 / Tenants 0.1.1](compatibilidad-v030-v011.md)
+- [Integración Core/Tenants vigente](integracion-core-v030-tenants-v011.md)

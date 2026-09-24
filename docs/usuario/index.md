@@ -44,3 +44,4 @@ fuente canónica, regenerar adaptadores y declarar modelos por ejecución.
 
 <!-- FEATURE_LINKS_END -->
 # Instalación y compatibilidad: [matriz vigente](../tecnica/compatibilidad-v030-v011.md)
+- [Integración Core/Tenants](integracion-core-v030-tenants-v011.md)
