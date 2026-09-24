@@ -71,10 +71,10 @@ v0.2.1. La evidencia vigente de GitHub prevalece sobre cualquier snapshot.
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-24T19:23:50Z
+- Actualizado: 2026-09-24T19:29:22Z
 - Versión: v2.0.0
 - Rama: milestone/persons-v030-v011
-- HEAD: 59005c84ce86b97e43d4adbe0b2efdc2d6f41f0d
+- HEAD: a3ddb1dc5c5ed2d883ff9eb960bbc3fcbf2d521e
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
 - Worktrees: 2
