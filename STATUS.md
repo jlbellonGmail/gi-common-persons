@@ -1,10 +1,22 @@
 # Estado operativo de GI-COMMON-PERSONS
 
-Fecha de inspección: 2026-09-21. Estado: Feature 09 cerrada después del merge confirmado en `develop`.
+## Unidad vigente (2026-09-24)
+
+- Milestone `10-persons-v030-v011` en rama `milestone/10-persons-v030-v011`.
+- Persons consume Core `0.3.0` y Tenants `0.1.1` por dependencias exactas.
+- Implementación, migración, documentación y evidencia están terminadas para
+  `READY_FOR_PR`; no se hizo merge.
+- PyPI no ofrece ninguno de los paquetes: instalación pública bloqueada.
+- Tags locales exactos, instalación limpia desde tags y compatibilidad pública
+  verificados; Tenants conserva la discrepancia de `__version__ == 0.1.0`.
+- QA Persons: `24 passed, 1 skipped` por falta de `PERSONS_TEST_DATABASE_URL`;
+  la migración real no se ejecutó ni se desplegó.
+
+Fecha de inspección: 2026-09-24. Estado: milestone 10 en PR #5 abierta, `READY_FOR_PR`; no se hizo merge.
 
 ## Hechos
 
-- Core instalado y validado en versión `0.2.1`; Identity contract `0.2.0`.
+- Core publicado e instalado en versión `0.3.0`; Tenants publicado e instalado en versión de distribución `0.1.1`; Identity contract `0.2.0`.
 - Persons consume Core únicamente mediante su API pública: CoreApi `0.1.0` e
   identidad `0.2.0`; Core recibe `person_id` como referencia opaca.
 - Feature 09 `09-integracion-core-v021` está cerrada en `ROADMAP.md` (`[x]`).
@@ -59,15 +71,15 @@ v0.2.1. La evidencia vigente de GitHub prevalece sobre cualquier snapshot.
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-21T14:34:27Z
+- Actualizado: 2026-09-24T21:52:12Z
 - Versión: v2.0.0
-- Rama: develop
-- HEAD: 60a2c0a47bf5da8445974b724f9976565198c4ec
+- Rama: milestone/persons-v030-v011
+- HEAD: 41073bb653fb4dfff639cd15ef5f5695095fd915
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
-- Worktrees: 3
-- Worktrees Git: 3
-- Unidades activas: ninguna
+- Worktrees: 2
+- Worktrees Git: 2
+- Unidades activas: = [milestone/persons-v030-v011]
 - PR activa: UNKNOWN / sin PR abierta
 - CI: UNKNOWN / sin CI verificable
 - CI vigente: UNKNOWN / sin CI verificable

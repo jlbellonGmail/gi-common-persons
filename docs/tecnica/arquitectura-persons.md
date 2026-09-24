@@ -21,7 +21,7 @@ columnas ni enums de esos roles ni importa los módulos consumidores.
 ```mermaid
 flowchart LR
   Consumidor[Módulos consumidores] --> Persons[Contratos públicos de Persons]
-  Persons --> Core[CoreApi 0.1.0 / Identity 0.2.0]
+  Persons --> Core[CoreApi 0.3.0 / Identity 0.2.0 / Tenant 0.3.0]
   Host[Host autenticado] --> Persons
   Host --> Core
 ```
@@ -55,7 +55,7 @@ transporte, dominio/aplicación/puertos/adaptadores. Encaja con Core sin agregar
 un servidor HTTP ni framework por adelantado. Persistencia PostgreSQL detrás
 de un puerto es candidata, no desplegada ni habilitada en este bootstrap.
 
-El host suministra una instancia pública CoreApi 0.2.1 y un contexto confiable.
+El host suministra una instancia pública CoreApi 0.3.0 y un contexto confiable.
 Persons importa sólo CoreApi y errores públicos; no compone CoreService ni
 SupabaseCoreStore ni accede a CoreApi.service. El host resuelve sujeto de sesión
 a user_id. Core recibe person_id como referencia opaca y nunca el objeto Person.

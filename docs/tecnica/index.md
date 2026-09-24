@@ -16,6 +16,8 @@ para auditar el estado acumulado del repo con checks verificables, no una
 calificación subjetiva.
 
 <!-- FEATURE_LINKS_START -->
+- [Integracion Core V030 Tenants V011](integracion-core-v030-tenants-v011.md)
+- [Compatibilidad Core 0.3.0 / Tenants 0.1.1](compatibilidad-v030-v011.md)
 - [Integracion Core V021](integracion-core-v021.md)
 - [Core v0.2.1 y identidad](core-integration-v021.md)
 - [Contrato Core](contrato-core.md)
