@@ -10,6 +10,7 @@ fuente canónica, regenerar adaptadores y declarar modelos por ejecución.
 <!-- FEATURE_LINKS_START -->
 - [Compatibilidad actual Core 0.3.0 / Tenants 0.1.1](../tecnica/compatibilidad-v030-v011.md)
 - [Integración Core/Tenants](integracion-core-v030-tenants-v011.md)
+- [Integracion Core V030 Tenants V011](integracion-core-v030-tenants-v011.md)
 - [Integracion Core V021](integracion-core-v021.md)
 - [Core v0.2.1 y identidad](core-integration-v021.md)
 - [Compatibilidad actual Core v0.3.0 / Tenants v0.1.1](../tecnica/compatibilidad-v030-v011.md)
