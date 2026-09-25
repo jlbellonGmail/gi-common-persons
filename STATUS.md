@@ -1,88 +1,49 @@
 # Estado operativo de GI-COMMON-PERSONS
 
-## Unidad vigente (2026-09-24)
+## Estado final de Persons (2026-09-25)
 
-- Milestone `10-persons-v030-v011` en rama `milestone/10-persons-v030-v011`.
-- Persons consume Core `0.3.0` y Tenants `0.1.1` por dependencias exactas.
-- Implementación, migración, documentación y evidencia están terminadas para
-  `READY_FOR_PR`; no se hizo merge.
-- PyPI no ofrece ninguno de los paquetes: instalación pública bloqueada.
-- Tags locales exactos, instalación limpia desde tags y compatibilidad pública
-  verificados; Tenants conserva la discrepancia de `__version__ == 0.1.0`.
-- QA Persons: `24 passed, 1 skipped` por falta de `PERSONS_TEST_DATABASE_URL`;
-  la migración real no se ejecutó ni se desplegó.
+- Unidad 10 y PR #5 están mergeadas en `develop` con merge commit
+  `4e0bf72932cb42c71ff701ee21e6167f3d6433a1`.
+- `ROADMAP.md` marca `10-integracion-core-v030-tenants-v011` como `[x]`.
+- El worktree y la rama de la Unidad 10 fueron reconciliados y eliminados.
+- Persons consume Core `0.3.0` y Tenants `0.1.1` por dependencias exactas,
+  únicamente mediante APIs públicas.
+- La CI de PR #5 pasó; `Post-merge feature close` también pasó.
+- El primer CI sobre `develop` falló sólo en `local-reconciler-tests` por no
+  detectar el arranque del reconciliador dentro de 60 segundos; circuit-tests
+  y product-tests pasaron. La prueba puntual pasó localmente cinco veces y el
+  rerun de CI `36075235724` pasó con los tres jobs verdes.
+- Supabase real no se ejecutó porque `PERSONS_TEST_DATABASE_URL` no está
+  definido. No se simula éxito.
+- Los wheels publicados de Core y Tenants se verificaron por GitHub Releases;
+  PyPI no ofrece esas versiones. Tenants declara metadata 0.1.1 pero su
+  módulo conserva `__version__ == 0.1.0`.
 
-Fecha de inspección: 2026-09-24. Estado: milestone 10 en PR #5 abierta, `READY_FOR_PR`; no se hizo merge.
+## Cierre operativo
 
-## Hechos
-
-- Core publicado e instalado en versión `0.3.0`; Tenants publicado e instalado en versión de distribución `0.1.1`; Identity contract `0.2.0`.
-- Persons consume Core únicamente mediante su API pública: CoreApi `0.1.0` e
-  identidad `0.2.0`; Core recibe `person_id` como referencia opaca.
-- Feature 09 `09-integracion-core-v021` está cerrada en `ROADMAP.md` (`[x]`).
-- Checkout actual: rama `develop`, worktree `C:\Proyectos\gi-common-persons`.
-- Worktree de la feature conservado, sin limpieza local automática:
-  rama `feature/v2.0.1-09-core-integration`, ruta
-  `C:\Proyectos\worktrees\v0.2.1-09-core-integration`.
-- PR #4 fue mergeada contra `develop`:
-  https://github.com/jlbellonGmail/gi-common-persons/pull/4
-- Commit de merge confirmado: `97a75a9a53c970fe476a67978dd6165c7a7d035a`.
-- CI de la PR fue verde: `circuit-tests`, `product-tests` y
-  `local-reconciler-tests` completaron con éxito.
-- El cierre remoto de ROADMAP fue validado por `close-feature.ps1` con el slug
-  canónico y publicado en `origin/develop` mediante el commit `da3a341`.
-- El primer workflow post-merge falló por recibir el slug incorrecto
-  `09-core-integration`; se corrigió ejecutando el cierre canónico sin alterar
-  Core ni realizar otro merge.
-- Suite real: `267 passed in 422.90s`; Persons: `20 passed, 1 skipped` por
-  ausencia de `PERSONS_TEST_DATABASE_URL` para Supabase local.
-- Evidencia principal: `runs/v2.0.1/09-integracion-core-v021/`, incluyendo
-  `test-report-1.md`, `audit-1.md`, `code-review-1.md` y
-  `validation-evidence.json`.
-- No se modificó GI-PLATFORM-CORE ni `develop`; no se usaron credenciales
-  productivas de Supabase.
-
-## Pendientes materiales
-
-1. RESUELTO: el usuario confirmó personas/documentos por organización y sin compartir entre tenants (2026-09-20).
-2. Mantener el worktree de la feature hasta una limpieza local explícita y segura.
-3. Las decisiones de retención/borrado y cualquier despliegue real permanecen fuera de esta unidad.
-
-## Próximo paso
-
-Feature 09 está cerrada en remoto. No crear otra unidad ni modificar Core desde
-este estado sin un nuevo alcance y evidencia.
-
-El bloque automático puede conservar la versión del motor del Template; la
-versión operativa de esta unidad es v2.0.1 y la dependencia integrada es Core
-v0.2.1. La evidencia vigente de GitHub prevalece sobre cualquier snapshot.
-
-## Verificación de esta reentrada (2026-09-21)
-
-- Baseline inicial comprometida en `e9bdea8`.
-- Template adoptado: `v2.0.1` / `fa8aade44fe808635e01916da7347b1d1837da7a`.
-- Core público verificado en release `v0.2.1`; contratos `CoreApi 0.1.0` e
-  Identity `0.2.0`.
-- Suite completa: `267 passed in 422.90s`; suite Persons: `20 passed, 1 skipped`.
-- PR #4 mergeada contra `develop` con CI verde; no se hizo ningún merge adicional.
-- Feature 09 cerrada en `origin/develop` con ROADMAP en `[x]`.
+- No hay unidades de Persons activas ni worktrees huérfanos.
+- El fallo `complete-approved-pr` de PR #5 quedó explicado por la ausencia de
+  `runs/v2.0.0/persons-v030-v011/human-authorization.md`; ocurrió antes del
+  merge humano y no invalida los checks verdes de la PR.
+- La evidencia primaria vigente es GitHub, `ROADMAP.md`, el contrato de la
+  unidad y `runs/milestone-persons-v030-v011/`.
 
 <!-- STATUS:AUTO:BEGIN -->
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-24T23:57:24Z
+- Actualizado: 2026-09-25T01:52:34Z
 - Versión: v2.0.0
-- Rama: develop
-- HEAD: 182ea72013d92c907de38c7c3759bb014d9b2569
-- Remoto: https://github.com/jlbellonGmail/gi-common-persons
+- Rama: maintenance/v2.0.0-T10-status-reconciler-fix
+- HEAD: 147953bdf4c6ab28443c30a461597d7d13a97296
+- Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
-- Worktrees: 3
-- Worktrees Git: 3
-- Unidades activas: ninguna
+- Worktrees: 2
+- Worktrees Git: 2
+- Unidades activas: = [maintenance/v2.0.0-T10-status-reconciler-fix]
 - PR activa: UNKNOWN / sin PR abierta
-- CI:  @ 4e0bf72932cb42c71ff701ee21e6167f3d6433a1
-- CI vigente:  @ 4e0bf72932cb42c71ff701ee21e6167f3d6433a1
+- CI: UNKNOWN / sin CI verificable
+- CI vigente: UNKNOWN / sin CI verificable
 - Última release: UNKNOWN / no disponible
 
 <!-- STATUS:AUTO:END -->
