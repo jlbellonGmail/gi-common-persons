@@ -5,14 +5,15 @@
 - Unidad 10 y PR #5 están mergeadas en `develop` con merge commit
   `4e0bf72932cb42c71ff701ee21e6167f3d6433a1`.
 - `ROADMAP.md` marca `10-integracion-core-v030-tenants-v011` como `[x]`.
-- El worktree y la rama de la Unidad 10 fueron reconciliados y eliminados.
+- PR #6 de cierre documental y PR #7 de corrección del launcher están
+  mergeadas; PR #7 terminó en `600f726f8fc9a888e3eddf7259915de51aa86c61`.
+- No hay worktrees ni ramas locales de Features/Maintenance de Persons.
 - Persons consume Core `0.3.0` y Tenants `0.1.1` por dependencias exactas,
   únicamente mediante APIs públicas.
-- La CI de PR #5 pasó; `Post-merge feature close` también pasó.
-- El primer CI sobre `develop` falló sólo en `local-reconciler-tests` por no
-  detectar el arranque del reconciliador dentro de 60 segundos; circuit-tests
-  y product-tests pasaron. La prueba puntual pasó localmente cinco veces y el
-  rerun de CI `36075235724` pasó con los tres jobs verdes.
+- La CI final de `develop` (`36086892543`) pasó con `circuit-tests`,
+  `product-tests` y `local-reconciler-tests` verdes.
+- El fallo de reconciliación fue corregido inicializando `$scriptPath` desde
+  `$PSCommandPath`; el hijo ya no recibe `-File -Slug`.
 - Supabase real no se ejecutó porque `PERSONS_TEST_DATABASE_URL` no está
   definido. No se simula éxito.
 - Los wheels publicados de Core y Tenants se verificaron por GitHub Releases;
@@ -25,17 +26,18 @@
 - El fallo `complete-approved-pr` de PR #5 quedó explicado por la ausencia de
   `runs/v2.0.0/persons-v030-v011/human-authorization.md`; ocurrió antes del
   merge humano y no invalida los checks verdes de la PR.
-- La evidencia primaria vigente es GitHub, `ROADMAP.md`, el contrato de la
-  unidad y `runs/milestone-persons-v030-v011/`.
+- La evidencia primaria vigente está en GitHub, `ROADMAP.md`, el contrato de la
+  unidad, `runs/milestone-persons-v030-v011/` y
+  `runs/maintenance-reconciler-launch-fix/validation-evidence.md`.
 
 <!-- STATUS:AUTO:BEGIN -->
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-25T02:21:49Z
+- Actualizado: 2026-09-25T02:42:15Z
 - Versión: v2.0.0
 - Rama: develop
-- HEAD: 4f829e18aac0c35a9ee79991dcdc8f4b91ae63c8
+- HEAD: 600f726f8fc9a888e3eddf7259915de51aa86c61
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
 - Worktrees: 3
