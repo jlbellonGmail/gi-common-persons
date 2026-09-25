@@ -10,7 +10,7 @@
 - No hay worktrees ni ramas locales de Features/Maintenance de Persons.
 - Persons consume Core `0.3.0` y Tenants `0.1.1` por dependencias exactas,
   únicamente mediante APIs públicas.
-- La CI final de `develop` (`36086892543`) pasó con `circuit-tests`,
+- La CI final de `develop` (`36088541199`) pasó con `circuit-tests`,
   `product-tests` y `local-reconciler-tests` verdes.
 - El fallo de reconciliación fue corregido inicializando `$scriptPath` desde
   `$PSCommandPath`; el hijo ya no recibe `-File -Slug`.
@@ -34,18 +34,18 @@
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-25T02:58:55Z
+- Actualizado: 2026-09-25T03:04:46Z
 - Versión: v2.0.0
 - Rama: develop
-- HEAD: 7be28ef3314924bb642a5d05d8079d6e952f767a
+- HEAD: 4b9c469d655d0d03f29b68b2578e27f44661cdce
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
 - Worktrees: 3
 - Worktrees Git: 3
 - Unidades activas: ninguna
 - PR activa: UNKNOWN / sin PR abierta
-- CI: failure @ 7be28ef3314924bb642a5d05d8079d6e952f767a
-- CI vigente: failure @ 7be28ef3314924bb642a5d05d8079d6e952f767a
+- CI: failure @ 4b9c469d655d0d03f29b68b2578e27f44661cdce
+- CI vigente: failure @ 4b9c469d655d0d03f29b68b2578e27f44661cdce
 - Última release: UNKNOWN / no disponible
 
 <!-- STATUS:AUTO:END -->
