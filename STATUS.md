@@ -32,15 +32,15 @@
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-25T01:52:34Z
+- Actualizado: 2026-09-25T02:21:49Z
 - Versión: v2.0.0
-- Rama: maintenance/v2.0.0-T10-status-reconciler-fix
-- HEAD: 147953bdf4c6ab28443c30a461597d7d13a97296
+- Rama: develop
+- HEAD: 4f829e18aac0c35a9ee79991dcdc8f4b91ae63c8
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
-- Worktrees: 2
-- Worktrees Git: 2
-- Unidades activas: = [maintenance/v2.0.0-T10-status-reconciler-fix]
+- Worktrees: 3
+- Worktrees Git: 3
+- Unidades activas: ninguna
 - PR activa: UNKNOWN / sin PR abierta
 - CI: UNKNOWN / sin CI verificable
 - CI vigente: UNKNOWN / sin CI verificable
