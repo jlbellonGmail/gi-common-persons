@@ -21,6 +21,16 @@ param(
 $ErrorActionPreference = "Stop"
 . (Join-Path $PSScriptRoot "feature-contract.ps1")
 
+# El launcher de fondo debe invocar esta misma instancia de script. En una
+# llamada desde un worktree enlazado, `$PSScriptRoot` identifica el checkout
+# correctamente, pero `$scriptPath` no existe implícitamente en PowerShell.
+# Sin esta ruta, Start-Process interpreta el primer argumento (`-Slug`) como
+# el valor de `-File` y el reconciliador hijo nunca arranca.
+$scriptPath = $PSCommandPath
+if ([string]::IsNullOrWhiteSpace($scriptPath)) {
+    throw "No pude resolver la ruta del script de reconciliación."
+}
+
 function Test-GitSuccess {
     param([Parameter(Mandatory = $true)][string[]] $Arguments)
     & git @Arguments *> $null
