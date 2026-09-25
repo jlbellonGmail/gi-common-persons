@@ -32,10 +32,10 @@
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-25T01:50:01Z
+- Actualizado: 2026-09-25T01:52:34Z
 - Versión: v2.0.0
 - Rama: maintenance/v2.0.0-T10-status-reconciler-fix
-- HEAD: ae02e4c83817cb1d94d82f648e0fc2abc88e0008
+- HEAD: 147953bdf4c6ab28443c30a461597d7d13a97296
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
 - Worktrees: 2
