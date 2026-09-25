@@ -34,10 +34,10 @@
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-25T02:42:15Z
+- Actualizado: 2026-09-25T02:47:45Z
 - Versión: v2.0.0
 - Rama: develop
-- HEAD: 600f726f8fc9a888e3eddf7259915de51aa86c61
+- HEAD: 531560500c918f296a3c0876035166aa28906ac6
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Working tree: dirty
 - Worktrees: 3
