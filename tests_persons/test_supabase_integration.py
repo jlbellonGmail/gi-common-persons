@@ -30,6 +30,13 @@ def test_persons_schema_constraints_rls_and_rollback():
     with psycopg.connect(dsn) as connection:
         with connection.transaction():
             with connection.cursor() as cursor:
+                cursor.execute(
+                    """
+                    insert into persons.tax_category
+                        (country_code, code, label, valid_from)
+                    values ('AR', 'MONO', 'Monotributo', '2020-01-01')
+                    """
+                )
                 cursor.execute("set role authenticated")
                 cursor.execute("select set_config('app.organization_id', %s, true)", (org_a,))
                 cursor.execute(
@@ -40,11 +47,17 @@ def test_persons_schema_constraints_rls_and_rollback():
                     """
                 )
                 assert [row[0] for row in cursor.fetchall()] == [
+                    "gender_option",
                     "person",
+                    "person_address",
                     "person_audit",
                     "person_contact",
                     "person_identifier",
+                    "person_identity",
                     "person_organization_link",
+                    "person_tax_identifier",
+                    "person_tax_profile",
+                    "tax_category",
                 ]
 
                 cursor.execute(
@@ -55,7 +68,26 @@ def test_persons_schema_constraints_rls_and_rollback():
                     order by c.relname
                     """
                 )
-                assert all(row[1:] == (True, True) for row in cursor.fetchall())
+                rls = cursor.fetchall()
+                assert len(rls) == 11
+                assert all(row[1:] == (True, True) for row in rls)
+
+                cursor.execute(
+                    """
+                    select count(*) from pg_policies
+                    where schemaname = 'persons'
+                    and policyname in ('persons_tenant_select', 'persons_tenant_insert', 'persons_tenant_update')
+                    """
+                )
+                assert cursor.fetchone()[0] == 31
+
+                cursor.execute(
+                    """
+                    select count(*) from pg_indexes
+                    where schemaname = 'persons'
+                    """
+                )
+                assert cursor.fetchone()[0] >= 13
 
                 cursor.execute(
                     """
@@ -94,6 +126,42 @@ def test_persons_schema_constraints_rls_and_rollback():
                 )
                 cursor.execute(
                     """
+                    insert into persons.person_address
+                        (organization_id, person_id, address_type, line1, country_code, is_primary)
+                    values (%s, %s, 'home', 'Calle 1', 'AR', true)
+                    """,
+                    (org_a, person_id),
+                )
+                cursor.execute(
+                    "insert into persons.gender_option (organization_id, code, label) values (%s, 'F', 'Female')",
+                    (org_a,),
+                )
+                cursor.execute(
+                    """
+                    insert into persons.person_identity
+                        (organization_id, person_id, core_user_id, external_subject)
+                    values (%s, %s, 'core-user', 'subject')
+                    """,
+                    (org_a, person_id),
+                )
+                cursor.execute(
+                    """
+                    insert into persons.person_tax_identifier
+                        (organization_id, person_id, country_code, identifier_type, value_original, value_normalized)
+                    values (%s, %s, 'AR', 'CUIT', '20-12345678-3', '20123456783')
+                    """,
+                    (org_a, person_id),
+                )
+                cursor.execute(
+                    """
+                    insert into persons.person_tax_profile
+                        (organization_id, person_id, country_code, category_code, valid_from)
+                    values (%s, %s, 'AR', 'MONO', '2020-01-01')
+                    """,
+                    (org_a, person_id),
+                )
+                cursor.execute(
+                    """
                     insert into persons.person_audit
                         (organization_id, audit_id, person_id, actor_user_id,
                          action, correlation_id, outcome)
@@ -105,6 +173,12 @@ def test_persons_schema_constraints_rls_and_rollback():
                 cursor.execute("select count(*) from persons.person where organization_id = %s", (org_a,))
                 assert cursor.fetchone()[0] == 1
                 cursor.execute("select count(*) from persons.person where organization_id = %s", (org_b,))
+                assert cursor.fetchone()[0] == 0
+
+                cursor.execute("select set_config('app.organization_id', %s, true)", (org_b,))
+                cursor.execute("select count(*) from persons.person_address")
+                assert cursor.fetchone()[0] == 0
+                cursor.execute("select count(*) from persons.person_tax_profile")
                 assert cursor.fetchone()[0] == 0
 
                 cursor.execute("select set_config('app.organization_id', %s, true)", (org_b,))
