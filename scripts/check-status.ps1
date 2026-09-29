@@ -20,7 +20,7 @@ try {
     $errors = @(); $warnings = @(); $recordedBranch = Field $block 'Rama'; $recordedHead = Field $block 'HEAD'; $recordedTree = Field $block 'Working tree'
     if ($null -eq $recordedBranch -or $recordedBranch -ne $actual.branch) { $errors += 'INCONSISTENTE rama no coincide' }
     if ($recordedHead -and $recordedHead -ne $actual.head -and -not (Test-StatusOnlyRange $recordedHead $actual.head)) { $warnings += 'STALE HEAD: snapshot regenerable' }
-    if ($recordedTree -and $recordedTree -ne $actual.workingTree) { $warnings += 'STALE working tree: snapshot regenerable' }
+    if ($recordedTree -eq 'clean' -and $actual.workingTree -ne 'clean') { $warnings += 'STALE working tree: snapshot regenerable' }
     $recordedVersion = Field $block 'Versión de desarrollo'; if ($recordedVersion -and $recordedVersion -ne (Format-StatusValue $actual.version.value)) { $warnings += 'STALE version: snapshot regenerable' }
     $recordedPr = Field $block 'PR vigente'; $expectedPr = if ($actual.pullRequest) { [string]$actual.pullRequest.number } else { 'ninguna PR abierta para este HEAD' }; if ($recordedPr -and $recordedPr -notmatch [regex]::Escape($expectedPr)) { $warnings += 'STALE PR: snapshot no refleja la PR vigente' }
     $recordedCi = Field $block 'CI vigente'; $ciHead = if ($recordedCi) { ($recordedCi -replace '^.*@\s*', '') } else { '' }; if ($actual.ci -and $recordedCi -and $recordedCi -notmatch [regex]::Escape([string]$actual.ci.headSha) -and -not (Test-StatusOnlyRange $ciHead $actual.head)) { $warnings += 'STALE CI: corresponde a otro HEAD' }
