@@ -332,7 +332,7 @@ PR; no compensarla con interpretación informal.
 
 ## Fundación de Persons (prioridad sobre ejemplos históricos)
 
-Snapshot Template v2.0.1, SHA fa8aade44fe808635e01916da7347b1d1837da7a.
+Snapshot Template v2.0.4, SHA f2a7a247f5c3408a4a1ef234a80e069fe40b9b3e.
 El dominio propio está en docs/tecnica/arquitectura-persons.md y documentos
 vinculados. No hay implementación ni stack de producto instalado todavía.
 CoreApi y errores públicos son la única dependencia de Core permitida.

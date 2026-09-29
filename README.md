@@ -18,6 +18,6 @@ Core recibe `person_id` como referencia opaca; nunca recibe el objeto Person.
 
 Documentación: [implementación técnica](docs/tecnica/persons.md), [contratos](docs/tecnica/contratos-persons.md), [modelo](docs/tecnica/modelo-persons.md), [compatibilidad](docs/tecnica/compatibilidad-v030-v011.md) y [uso](docs/usuario/persons.md).
 
-El circuito operativo procede del Template GI v2.0.1. La unidad vigente es el
-Milestone `02-07-persons-implementation`; su evidencia está en
+El circuito operativo procede del Template GI v2.0.4. La unidad histórica de
+implementación es el Milestone `02-07-persons-implementation`; su evidencia está en
 `runs/v2.0.1/milestone-02-07-persons-implementation/`.
