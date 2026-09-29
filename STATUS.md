@@ -34,18 +34,18 @@
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-29T08:40:01.0608749Z
+- Actualizado: 2026-09-29T08:45:18.1797762Z
 - Versión de desarrollo: v0.1.0
 - Fuente de versión: pyproject.toml
 - Rama: develop
-- HEAD: e11fbac6edef06fe7a4008c838225525afc7cdef
+- HEAD: 4ca31ebbbe38760d6cd2675ccefd160128aa9a59
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
 - Relación con remoto: 0	0
 - Working tree: dirty
 - Worktrees Git actuales: 1
 - Unidades activas: ninguna (no hay unidades ACTIVE)
 - PR vigente: ninguna PR abierta para este HEAD
-- CI vigente: in_progress/ @ e11fbac6edef06fe7a4008c838225525afc7cdef
+- CI vigente: in_progress/ @ 4ca31ebbbe38760d6cd2675ccefd160128aa9a59
 - Última release publicada: UNKNOWN / no release publicada verificable
 - Último tag: UNKNOWN / no disponible
 
