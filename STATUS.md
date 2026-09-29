@@ -34,18 +34,18 @@
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-29T04:00:49.3366268Z
-- Versión de desarrollo: v2.0.4
-- Fuente de versión: branch
-- Rama: maintenance/v2.0.4-status
-- HEAD: b8d06d5b6269be302baf84d88c7c7a8dc23e1056
+- Actualizado: 2026-09-29T04:07:31.4987748Z
+- Versión de desarrollo: UNKNOWN / no disponible
+- Fuente de versión: UNKNOWN / no disponible
+- Rama: develop
+- HEAD: ac4b1a53e637a4daeadc77640697d26076af8add
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
-- Relación con remoto: sin upstream verificable
+- Relación con remoto: 0	0
 - Working tree: clean
 - Worktrees Git actuales: 1
 - Unidades activas: ninguna (no hay unidades ACTIVE)
 - PR vigente: ninguna PR abierta para este HEAD
-- CI vigente: NOT RUN / no CI para este HEAD
+- CI vigente: queued/ @ ac4b1a53e637a4daeadc77640697d26076af8add
 - Última release publicada: UNKNOWN / no release publicada verificable
 - Último tag: UNKNOWN / no disponible
 
