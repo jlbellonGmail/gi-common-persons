@@ -378,8 +378,8 @@ ahora scripts maduros: no existe evidencia comparativa que lo justifique.
 
 ## Decisión: fundación de GI-COMMON-PERSONS
 
-La procedencia del circuito es Template v2.0.1. Sus decisiones históricas son
-referencias del motor, no funcionalidades de Persons. El diseño de producto y
+La adopción vigente del circuito es Template v2.0.4. Las decisiones históricas
+de la fundación v2.0.1 son referencias del motor, no funcionalidades de Persons. El diseño de producto y
 stack propuesto se encuentra en [Arquitectura de Persons](arquitectura-persons.md).
 En este bootstrap se incorpora documentación y circuito; no backend, base de
 datos, integración desplegada ni dependencia de runtime de producto.
