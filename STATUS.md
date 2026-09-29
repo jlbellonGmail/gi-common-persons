@@ -34,14 +34,14 @@
 
 ## Estado verificado automáticamente
 
-- Actualizado: 2026-09-29T03:24:55.0065326Z
+- Actualizado: 2026-09-29T03:26:07.3130737Z
 - Versión de desarrollo: UNKNOWN / no disponible
 - Fuente de versión: UNKNOWN / no disponible
 - Rama: maintenance/template-v2.0.4
-- HEAD: 77d96f42e50d76441fa5bd955382b9e126ef8b7c
+- HEAD: 34a63d9fb002cbc89961e749dffd9031bf6d1759
 - Remoto: https://github.com/jlbellonGmail/gi-common-persons.git
-- Relación con remoto: sin upstream verificable
-- Working tree: dirty
+- Relación con remoto: 0	0
+- Working tree: clean
 - Worktrees Git actuales: 1
 - Unidades activas: ninguna (no hay unidades ACTIVE)
 - PR vigente: ninguna PR abierta para este HEAD
