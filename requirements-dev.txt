@@ -8,3 +8,5 @@ pytest==8.3.5
 # para .agentic/"). Tooling del propio circuito, no stack de producto.
 jsonschema==4.23.0
 psycopg[binary]==3.2.3
+gi-platform-core @ https://github.com/jlbellonGmail/gi-platform-core/releases/download/v0.3.0/gi_platform_core-0.3.0-py3-none-any.whl
+gi-common-tenants @ https://github.com/jlbellonGmail/gi-common-tenants/releases/download/v0.1.1/gi_common_tenants-0.1.1-py3-none-any.whl
